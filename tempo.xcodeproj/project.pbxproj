@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		46AB95C129E2E5670003A3F4 /* ShareViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46AB95C029E2E5670003A3F4 /* ShareViewController.swift */; };
+		46AB95C429E2E5670003A3F4 /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 46AB95C229E2E5670003A3F4 /* MainInterface.storyboard */; };
+		46AB95C829E2E5670003A3F4 /* sharetempo.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 46AB95BE29E2E5670003A3F4 /* sharetempo.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		46BD14DD29E2767900C3BBE4 /* tempoApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46BD14DC29E2767900C3BBE4 /* tempoApp.swift */; };
 		46BD14DF29E2767900C3BBE4 /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46BD14DE29E2767900C3BBE4 /* Persistence.swift */; };
 		46BD14E229E2767900C3BBE4 /* tempo.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 46BD14E029E2767900C3BBE4 /* tempo.xcdatamodeld */; };
@@ -15,7 +18,35 @@
 		46BD14EA29E2767900C3BBE4 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 46BD14E929E2767900C3BBE4 /* Preview Assets.xcassets */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		46AB95C629E2E5670003A3F4 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 46BD14D129E2767900C3BBE4 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 46AB95BD29E2E5670003A3F4;
+			remoteInfo = sharetempo;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		46AB95C929E2E5670003A3F4 /* Embed Foundation Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				46AB95C829E2E5670003A3F4 /* sharetempo.appex in Embed Foundation Extensions */,
+			);
+			name = "Embed Foundation Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
+		46AB95BE29E2E5670003A3F4 /* sharetempo.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = sharetempo.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		46AB95C029E2E5670003A3F4 /* ShareViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareViewController.swift; sourceTree = "<group>"; };
+		46AB95C329E2E5670003A3F4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/MainInterface.storyboard; sourceTree = "<group>"; };
+		46AB95C529E2E5670003A3F4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		46BD14D929E2767900C3BBE4 /* tempo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = tempo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		46BD14DC29E2767900C3BBE4 /* tempoApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = tempoApp.swift; sourceTree = "<group>"; };
 		46BD14DE29E2767900C3BBE4 /* Persistence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Persistence.swift; sourceTree = "<group>"; };
@@ -27,6 +58,13 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		46AB95BB29E2E5670003A3F4 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		46BD14D629E2767900C3BBE4 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -37,10 +75,21 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		46AB95BF29E2E5670003A3F4 /* sharetempo */ = {
+			isa = PBXGroup;
+			children = (
+				46AB95C029E2E5670003A3F4 /* ShareViewController.swift */,
+				46AB95C229E2E5670003A3F4 /* MainInterface.storyboard */,
+				46AB95C529E2E5670003A3F4 /* Info.plist */,
+			);
+			path = sharetempo;
+			sourceTree = "<group>";
+		};
 		46BD14D029E2767900C3BBE4 = {
 			isa = PBXGroup;
 			children = (
 				46BD14DB29E2767900C3BBE4 /* tempo */,
+				46AB95BF29E2E5670003A3F4 /* sharetempo */,
 				46BD14DA29E2767900C3BBE4 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -49,6 +98,7 @@
 			isa = PBXGroup;
 			children = (
 				46BD14D929E2767900C3BBE4 /* tempo.app */,
+				46AB95BE29E2E5670003A3F4 /* sharetempo.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -78,6 +128,23 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		46AB95BD29E2E5670003A3F4 /* sharetempo */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 46AB95CC29E2E5670003A3F4 /* Build configuration list for PBXNativeTarget "sharetempo" */;
+			buildPhases = (
+				46AB95BA29E2E5670003A3F4 /* Sources */,
+				46AB95BB29E2E5670003A3F4 /* Frameworks */,
+				46AB95BC29E2E5670003A3F4 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = sharetempo;
+			productName = sharetempo;
+			productReference = 46AB95BE29E2E5670003A3F4 /* sharetempo.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
 		46BD14D829E2767900C3BBE4 /* tempo */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 46BD14ED29E2767900C3BBE4 /* Build configuration list for PBXNativeTarget "tempo" */;
@@ -85,10 +152,12 @@
 				46BD14D529E2767900C3BBE4 /* Sources */,
 				46BD14D629E2767900C3BBE4 /* Frameworks */,
 				46BD14D729E2767900C3BBE4 /* Resources */,
+				46AB95C929E2E5670003A3F4 /* Embed Foundation Extensions */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				46AB95C729E2E5670003A3F4 /* PBXTargetDependency */,
 			);
 			name = tempo;
 			productName = tempo;
@@ -105,6 +174,9 @@
 				LastSwiftUpdateCheck = 1430;
 				LastUpgradeCheck = 1430;
 				TargetAttributes = {
+					46AB95BD29E2E5670003A3F4 = {
+						CreatedOnToolsVersion = 14.3;
+					};
 					46BD14D829E2767900C3BBE4 = {
 						CreatedOnToolsVersion = 14.3;
 					};
@@ -124,11 +196,20 @@
 			projectRoot = "";
 			targets = (
 				46BD14D829E2767900C3BBE4 /* tempo */,
+				46AB95BD29E2E5670003A3F4 /* sharetempo */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		46AB95BC29E2E5670003A3F4 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				46AB95C429E2E5670003A3F4 /* MainInterface.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		46BD14D729E2767900C3BBE4 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -141,6 +222,14 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		46AB95BA29E2E5670003A3F4 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				46AB95C129E2E5670003A3F4 /* ShareViewController.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		46BD14D529E2767900C3BBE4 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -154,7 +243,81 @@
 		};
 /* End PBXSourcesBuildPhase section */
 
+/* Begin PBXTargetDependency section */
+		46AB95C729E2E5670003A3F4 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 46AB95BD29E2E5670003A3F4 /* sharetempo */;
+			targetProxy = 46AB95C629E2E5670003A3F4 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		46AB95C229E2E5670003A3F4 /* MainInterface.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				46AB95C329E2E5670003A3F4 /* Base */,
+			);
+			name = MainInterface.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
 /* Begin XCBuildConfiguration section */
+		46AB95CA29E2E5670003A3F4 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 2PT2WK79D9;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = sharetempo/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = sharetempo;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.vegapunk.tempo.sharetempo;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		46AB95CB29E2E5670003A3F4 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 2PT2WK79D9;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = sharetempo/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = sharetempo;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.vegapunk.tempo.sharetempo;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
 		46BD14EB29E2767900C3BBE4 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -267,6 +430,7 @@
 		46BD14EE29E2767900C3BBE4 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = tempo/tempo.entitlements;
@@ -285,9 +449,9 @@
 				"INFOPLIST_KEY_UILaunchScreen_Generation[sdk=iphonesimulator*]" = YES;
 				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphoneos*]" = UIStatusBarStyleDefault;
 				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphonesimulator*]" = UIStatusBarStyleDefault;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
 				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 13.2;
@@ -295,16 +459,19 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.vegapunk.tempo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = auto;
-				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
 		46BD14EF29E2767900C3BBE4 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = tempo/tempo.entitlements;
@@ -323,9 +490,9 @@
 				"INFOPLIST_KEY_UILaunchScreen_Generation[sdk=iphonesimulator*]" = YES;
 				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphoneos*]" = UIStatusBarStyleDefault;
 				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphonesimulator*]" = UIStatusBarStyleDefault;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
 				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 13.2;
@@ -333,16 +500,27 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.vegapunk.tempo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = auto;
-				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		46AB95CC29E2E5670003A3F4 /* Build configuration list for PBXNativeTarget "sharetempo" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				46AB95CA29E2E5670003A3F4 /* Debug */,
+				46AB95CB29E2E5670003A3F4 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		46BD14D429E2767900C3BBE4 /* Build configuration list for PBXProject "tempo" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
