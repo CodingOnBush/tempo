@@ -8,13 +8,16 @@
 import UIKit
 
 class ShareViewController: UIViewController {
+    // loadView: "If you create your views manually, you must override this method and use it to create your views."
     override func loadView() {
         super.loadView()
         self.setupView1()
     }
     
+    // viewDidLoad: "This method is called after the view controller has loaded its associated views into memory. This method is called regardless of whether the views were stored in a nib file or created programmatically in the loadView method."
     override func viewDidLoad() {
         super.viewDidLoad()
+//        print(getContextUrl())
     }
     
     private func setupNavBar() {
@@ -38,14 +41,14 @@ class ShareViewController: UIViewController {
     
     private lazy var textField: UITextField = {
         let textField = UITextField()
-        textField.text = "some value"
         textField.backgroundColor = .clear
         textField.translatesAutoresizingMaskIntoConstraints = false
+        textField.placeholder = "Test"
         return textField
     }()
     
     private func setupView1() {
-        self.view.backgroundColor = .darkGray
+        self.view.backgroundColor = .white
         self.setupNavBar()
         self.view.addSubview(textField)
         NSLayoutConstraint.activate([
@@ -66,5 +69,24 @@ class ShareViewController: UIViewController {
         let newView = UIView(frame: CGRect(x: (width * 0.10), y: (height * 0.10), width: (width * 0.75), height: (height / 2)))
         newView.backgroundColor = UIColor.yellow
         self.view.addSubview(newView)
+    }
+    
+    func getContextUrl() -> URL {
+        var contextUrl = URL(string: "")
+        
+        if let item = extensionContext?.inputItems.first as? NSExtensionItem,
+           let itemProvider = item.attachments?.first as? NSItemProvider,
+           itemProvider.hasItemConformingToTypeIdentifier("public.url") {
+            itemProvider.loadItem(forTypeIdentifier: "public.url", options: nil) { (url, error) in
+                if let shareURL = url as? URL {
+                    // do what you want to do with shareURL
+//                    stringUrl = try String(contentsOf: shareURL)
+                    contextUrl = shareURL
+                }
+                self.extensionContext?.completeRequest(returningItems: [], completionHandler:nil)
+            }
+        }
+        
+        return contextUrl!
     }
 }
