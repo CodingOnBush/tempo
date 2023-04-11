@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		46AB95C129E2E5670003A3F4 /* ShareViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46AB95C029E2E5670003A3F4 /* ShareViewController.swift */; };
-		46AB95C429E2E5670003A3F4 /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 46AB95C229E2E5670003A3F4 /* MainInterface.storyboard */; };
 		46AB95C829E2E5670003A3F4 /* sharetempo.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 46AB95BE29E2E5670003A3F4 /* sharetempo.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		46BD14DD29E2767900C3BBE4 /* tempoApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46BD14DC29E2767900C3BBE4 /* tempoApp.swift */; };
 		46BD14DF29E2767900C3BBE4 /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46BD14DE29E2767900C3BBE4 /* Persistence.swift */; };
@@ -16,6 +15,7 @@
 		46BD14E429E2767900C3BBE4 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46BD14E329E2767900C3BBE4 /* ContentView.swift */; };
 		46BD14E629E2767900C3BBE4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 46BD14E529E2767900C3BBE4 /* Assets.xcassets */; };
 		46BD14EA29E2767900C3BBE4 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 46BD14E929E2767900C3BBE4 /* Preview Assets.xcassets */; };
+		46DD0C1829E51A2F00DBC94C /* ShareNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46DD0C1729E51A2F00DBC94C /* ShareNavigationController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -45,7 +45,6 @@
 /* Begin PBXFileReference section */
 		46AB95BE29E2E5670003A3F4 /* sharetempo.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = sharetempo.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		46AB95C029E2E5670003A3F4 /* ShareViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareViewController.swift; sourceTree = "<group>"; };
-		46AB95C329E2E5670003A3F4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/MainInterface.storyboard; sourceTree = "<group>"; };
 		46AB95C529E2E5670003A3F4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		46BD14D929E2767900C3BBE4 /* tempo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = tempo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		46BD14DC29E2767900C3BBE4 /* tempoApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = tempoApp.swift; sourceTree = "<group>"; };
@@ -55,6 +54,7 @@
 		46BD14E529E2767900C3BBE4 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		46BD14E729E2767900C3BBE4 /* tempo.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = tempo.entitlements; sourceTree = "<group>"; };
 		46BD14E929E2767900C3BBE4 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		46DD0C1729E51A2F00DBC94C /* ShareNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareNavigationController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -79,8 +79,8 @@
 			isa = PBXGroup;
 			children = (
 				46AB95C029E2E5670003A3F4 /* ShareViewController.swift */,
-				46AB95C229E2E5670003A3F4 /* MainInterface.storyboard */,
 				46AB95C529E2E5670003A3F4 /* Info.plist */,
+				46DD0C1729E51A2F00DBC94C /* ShareNavigationController.swift */,
 			);
 			path = sharetempo;
 			sourceTree = "<group>";
@@ -206,7 +206,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				46AB95C429E2E5670003A3F4 /* MainInterface.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -227,6 +226,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				46AB95C129E2E5670003A3F4 /* ShareViewController.swift in Sources */,
+				46DD0C1829E51A2F00DBC94C /* ShareNavigationController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -250,17 +250,6 @@
 			targetProxy = 46AB95C629E2E5670003A3F4 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
-
-/* Begin PBXVariantGroup section */
-		46AB95C229E2E5670003A3F4 /* MainInterface.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				46AB95C329E2E5670003A3F4 /* Base */,
-			);
-			name = MainInterface.storyboard;
-			sourceTree = "<group>";
-		};
-/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		46AB95CA29E2E5670003A3F4 /* Debug */ = {
