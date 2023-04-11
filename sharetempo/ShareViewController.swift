@@ -8,16 +8,15 @@
 import UIKit
 
 class ShareViewController: UIViewController {
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-        // 1: Set the background and call the function to create the navigation bar
-        self.view.backgroundColor = .systemGray6
-        setupNavBar()
-        setupViews()
+    override func loadView() {
+        super.loadView()
+        self.setupView1()
     }
     
-    // 2: Set the title and the navigation items
+    override func viewDidLoad() {
+        super.viewDidLoad()
+    }
+    
     private func setupNavBar() {
         self.navigationItem.title = "My app"
         
@@ -28,7 +27,6 @@ class ShareViewController: UIViewController {
         self.navigationItem.setRightBarButton(itemDone, animated: false)
     }
     
-    // 3: Define the actions for the navigation items
     @objc private func cancelAction () {
         let error = NSError(domain: "some.bundle.identifier", code: 0, userInfo: [NSLocalizedDescriptionKey: "An error description"])
         extensionContext?.cancelRequest(withError: error)
@@ -41,13 +39,14 @@ class ShareViewController: UIViewController {
     private lazy var textField: UITextField = {
         let textField = UITextField()
         textField.text = "some value"
-        textField.backgroundColor = .white
+        textField.backgroundColor = .clear
         textField.translatesAutoresizingMaskIntoConstraints = false
-        
         return textField
     }()
     
-    private func setupViews() {
+    private func setupView1() {
+        self.view.backgroundColor = .darkGray
+        self.setupNavBar()
         self.view.addSubview(textField)
         NSLayoutConstraint.activate([
             textField.leadingAnchor.constraint(equalTo: self.view.leadingAnchor),
@@ -55,5 +54,17 @@ class ShareViewController: UIViewController {
             textField.centerYAnchor.constraint(equalTo: self.view.centerYAnchor),
             textField.heightAnchor.constraint(equalToConstant: 44)
         ])
+    }
+    
+    private func setupView2() {
+        let viewFrame = CGRect(x: 0, y: 0, width: 150, height: 300)
+        self.view = UIView(frame: viewFrame)
+        self.view.backgroundColor = UIColor.clear
+        
+        let width: CGFloat = UIScreen.main.bounds.size.width
+        let height: CGFloat = UIScreen.main.bounds.size.height
+        let newView = UIView(frame: CGRect(x: (width * 0.10), y: (height * 0.10), width: (width * 0.75), height: (height / 2)))
+        newView.backgroundColor = UIColor.yellow
+        self.view.addSubview(newView)
     }
 }
