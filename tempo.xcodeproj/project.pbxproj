@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		46A5D85629E7C1FA00C541CE /* CoreData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46A5D85529E7C1FA00C541CE /* CoreData.swift */; };
+		46A5D85729E7C29F00C541CE /* CoreData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46A5D85529E7C1FA00C541CE /* CoreData.swift */; };
 		46AB95C129E2E5670003A3F4 /* ShareViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46AB95C029E2E5670003A3F4 /* ShareViewController.swift */; };
 		46AB95C829E2E5670003A3F4 /* sharetempo.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 46AB95BE29E2E5670003A3F4 /* sharetempo.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		46BD14DD29E2767900C3BBE4 /* tempoApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46BD14DC29E2767900C3BBE4 /* tempoApp.swift */; };
@@ -43,6 +45,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		46A5D85529E7C1FA00C541CE /* CoreData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreData.swift; sourceTree = "<group>"; };
 		46AB95BE29E2E5670003A3F4 /* sharetempo.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = sharetempo.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		46AB95C029E2E5670003A3F4 /* ShareViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareViewController.swift; sourceTree = "<group>"; };
 		46AB95C529E2E5670003A3F4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -115,6 +118,7 @@
 				46BD14E729E2767900C3BBE4 /* tempo.entitlements */,
 				46BD14E029E2767900C3BBE4 /* tempo.xcdatamodeld */,
 				46BD14E829E2767900C3BBE4 /* Preview Content */,
+				46A5D85529E7C1FA00C541CE /* CoreData.swift */,
 			);
 			path = tempo;
 			sourceTree = "<group>";
@@ -228,6 +232,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				46AB95C129E2E5670003A3F4 /* ShareViewController.swift in Sources */,
+				46A5D85729E7C29F00C541CE /* CoreData.swift in Sources */,
 				46DD0C1829E51A2F00DBC94C /* ShareNavigationController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -240,6 +245,7 @@
 				46BD14DF29E2767900C3BBE4 /* Persistence.swift in Sources */,
 				46BD14E429E2767900C3BBE4 /* ContentView.swift in Sources */,
 				46BD14E229E2767900C3BBE4 /* tempo.xcdatamodeld in Sources */,
+				46A5D85629E7C1FA00C541CE /* CoreData.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
