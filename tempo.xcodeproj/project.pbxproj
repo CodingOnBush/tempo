@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		462870AC29EE0F9000A0BF79 /* SwiftUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 462870AB29EE0F9000A0BF79 /* SwiftUIView.swift */; };
 		46A5D85629E7C1FA00C541CE /* CoreData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46A5D85529E7C1FA00C541CE /* CoreData.swift */; };
 		46A5D85729E7C29F00C541CE /* CoreData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46A5D85529E7C1FA00C541CE /* CoreData.swift */; };
 		46AB95C129E2E5670003A3F4 /* ShareViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46AB95C029E2E5670003A3F4 /* ShareViewController.swift */; };
@@ -45,6 +46,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		462870AB29EE0F9000A0BF79 /* SwiftUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftUIView.swift; sourceTree = "<group>"; };
 		46A5D85529E7C1FA00C541CE /* CoreData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreData.swift; sourceTree = "<group>"; };
 		46AB95BE29E2E5670003A3F4 /* sharetempo.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = sharetempo.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		46AB95C029E2E5670003A3F4 /* ShareViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareViewController.swift; sourceTree = "<group>"; };
@@ -119,6 +121,7 @@
 				46BD14E029E2767900C3BBE4 /* tempo.xcdatamodeld */,
 				46BD14E829E2767900C3BBE4 /* Preview Content */,
 				46A5D85529E7C1FA00C541CE /* CoreData.swift */,
+				462870AB29EE0F9000A0BF79 /* SwiftUIView.swift */,
 			);
 			path = tempo;
 			sourceTree = "<group>";
@@ -243,6 +246,7 @@
 			files = (
 				46BD14DD29E2767900C3BBE4 /* tempoApp.swift in Sources */,
 				46BD14DF29E2767900C3BBE4 /* Persistence.swift in Sources */,
+				462870AC29EE0F9000A0BF79 /* SwiftUIView.swift in Sources */,
 				46BD14E429E2767900C3BBE4 /* ContentView.swift in Sources */,
 				46BD14E229E2767900C3BBE4 /* tempo.xcdatamodeld in Sources */,
 				46A5D85629E7C1FA00C541CE /* CoreData.swift in Sources */,

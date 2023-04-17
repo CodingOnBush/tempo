@@ -80,8 +80,38 @@ class ShareViewController: UIViewController {
                 if let shareURL = url as? URL {
                     // do what you want to do with shareURL
                     speedLabel.text = shareURL.description
+                    self.getAppDetails(appId: "389801252", country: "us") { result in
+                        switch result {
+                        case .success(let data):
+                            if let json = try? JSONSerialization.jsonObject(with: data, options: []) as? [String: Any] {
+                                // Traiter l'objet JSON ici
+                                speedLabel.text = json.description
+                            }
+                        case .failure(let error):
+                            print("Erreur lors de la récupération des informations de l'application : \(error.localizedDescription)")
+                        }
+                    }
+
                 }
             }
         }
     }
+    
+    func getAppDetails(appId: String, country: String, completion: @escaping (Result<Data, Error>) -> Void) {
+        let urlString = "https://itunes.apple.com/lookup?id=\(appId)&country=\(country)"
+        guard let url = URL(string: urlString) else {
+            completion(.failure(NSError(domain: "Invalid URL", code: -1, userInfo: nil)))
+            return
+        }
+        let task = URLSession.shared.dataTask(with: url) { (data, response, error) in
+            guard let data = data, error == nil else {
+                completion(.failure(error!))
+                return
+            }
+            completion(.success(data))
+        }
+        task.resume()
+    }
+    
+    
 }
