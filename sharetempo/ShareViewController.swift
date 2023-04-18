@@ -5,113 +5,60 @@
 //  Created by VegaPunk on 09/04/2023.
 //
 
-import UIKit
-import CoreData
-import MobileCoreServices
+import SwiftUI
 
 class ShareViewController: UIViewController {
-    
-    override func loadView() {
-        super.loadView()
-        self.setupView1()
-    }
-    
     override func viewDidLoad() {
         super.viewDidLoad()
-    }
-    
-    private func setupNavBar() {
-        self.navigationItem.title = "My app"
-        
-        let itemCancel = UIBarButtonItem(barButtonSystemItem: .cancel, target: self, action: #selector(cancelAction))
-        self.navigationItem.setLeftBarButton(itemCancel, animated: false)
-        
-        let itemDone = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(doneAction))
-        self.navigationItem.setRightBarButton(itemDone, animated: false)
-    }
-    
-    @objc private func cancelAction () {
-        let error = NSError(domain: "com.vegapunk.tempo.extension", code: 0, userInfo: [NSLocalizedDescriptionKey: "An error description"])
-        extensionContext?.cancelRequest(withError: error)
-    }
-    
-    @objc private func doneAction() {
-        extensionContext?.completeRequest(returningItems: [], completionHandler: nil)
-    }
-    
-    private func setupView1() {
-        self.view.backgroundColor = .init(red: 0.0, green: 0.2, blue: 0.0, alpha: 1)
-        
-        self.setupNavBar()
-        
-        let textField = UITextField()
-        textField.backgroundColor = .clear
-        textField.translatesAutoresizingMaskIntoConstraints = false
-        textField.placeholder = "placeholder"
-        self.view.addSubview(textField)
-        
-        let button = UIButton(frame: CGRect(x: 100, y: 100, width: 100, height: 50))
-        button.backgroundColor = .green
-        button.setTitle("Test Button", for: .normal)
-        button.addTarget(self, action: #selector(buttonAction), for: .touchUpInside)
-        self.view.addSubview(button)
-        
+
+        // Créer une instance de la vue SwiftUI
+        let swiftUIView = MySwiftUIView()
+
+        // Créer un contrôleur d'hôte SwiftUI
+        let hostingController = UIHostingController(rootView: swiftUIView)
+
+        // Ajouter le contrôleur d'hôte SwiftUI à la vue
+        addChild(hostingController)
+        view.addSubview(hostingController.view)
+        hostingController.view.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            textField.leadingAnchor.constraint(equalTo: self.view.leadingAnchor),
-            textField.trailingAnchor.constraint(equalTo: self.view.trailingAnchor),
-            textField.centerYAnchor.constraint(equalTo: self.view.centerYAnchor),
-            textField.heightAnchor.constraint(equalToConstant: 44)
+            hostingController.view.topAnchor.constraint(equalTo: view.topAnchor),
+            hostingController.view.bottomAnchor.constraint(equalTo: view.bottomAnchor),
+            hostingController.view.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            hostingController.view.trailingAnchor.constraint(equalTo: view.trailingAnchor)
         ])
+        hostingController.didMove(toParent: self)
     }
-    
-    @objc func buttonAction(sender: UIButton!) {
-        let speedLabel = UILabel(frame: CGRect(x: 0, y: 200, width: 300, height: 521))
-        speedLabel.text = "url ?"
-        speedLabel.textColor = .white
-        speedLabel.lineBreakMode = .byWordWrapping
-        speedLabel.numberOfLines = 0
-        speedLabel.textAlignment = .left
-        self.view.addSubview(speedLabel)
-        
-        if let item = extensionContext?.inputItems.first as? NSExtensionItem,
-           let itemProvider = item.attachments?.first as? NSItemProvider,
-           itemProvider.hasItemConformingToTypeIdentifier("public.url") {
-            itemProvider.loadItem(forTypeIdentifier: "public.url", options: nil) { (url, error) in
-                if let shareURL = url as? URL {
-                    // do what you want to do with shareURL
-                    speedLabel.text = shareURL.description
-                    self.getAppDetails(appId: "389801252", country: "us") { result in
-                        switch result {
-                        case .success(let data):
-                            if let json = try? JSONSerialization.jsonObject(with: data, options: []) as? [String: Any] {
-                                // Traiter l'objet JSON ici
-                                speedLabel.text = json.description
-                            }
-                        case .failure(let error):
-                            print("Erreur lors de la récupération des informations de l'application : \(error.localizedDescription)")
+}
+
+struct MySwiftUIView: View {
+    @State private var shareURL: URL?
+    @State private var error: String = "no error"
+
+    var body: some View {
+        VStack {
+            Text("Share Extension URL:")
+            Text(shareURL?.absoluteString ?? "No URL found")
+            Text("Error : \(error)")
+        }
+        .onAppear {
+            let item = NSExtensionContext().inputItems.first as? NSExtensionItem
+            let itemProvider = item?.attachments?.first
+
+            if let urlType = URL(string: "public.url"), itemProvider?.hasItemConformingToTypeIdentifier(urlType.absoluteString) ?? false {
+                itemProvider?.loadItem(forTypeIdentifier: urlType.absoluteString, options: nil) { (url, error) in
+                    if let shareURL = url as? URL {
+                        self.error = "HEY"
+                        DispatchQueue.main.async {
+                            self.shareURL = shareURL
+                        }
+                    } else {
+                        DispatchQueue.main.async {
+                            self.error = "0 URL found"
                         }
                     }
-
                 }
             }
         }
     }
-    
-    func getAppDetails(appId: String, country: String, completion: @escaping (Result<Data, Error>) -> Void) {
-        let urlString = "https://itunes.apple.com/lookup?id=\(appId)&country=\(country)"
-        guard let url = URL(string: urlString) else {
-            completion(.failure(NSError(domain: "Invalid URL", code: -1, userInfo: nil)))
-            return
-        }
-        let task = URLSession.shared.dataTask(with: url) { (data, response, error) in
-            guard let data = data, error == nil else {
-                completion(.failure(error!))
-                return
-            }
-            completion(.success(data))
-        }
-        task.resume()
-    }
-    
-    
 }
