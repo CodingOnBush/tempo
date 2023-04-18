@@ -12,7 +12,7 @@ class ShareViewController: UIViewController {
         super.viewDidLoad()
 
         // Créer une instance de la vue SwiftUI
-        let swiftUIView = MySwiftUIView(myNSExtensionItem: extensionContext?.inputItems.first as? NSExtensionItem)
+        let swiftUIView = MySwiftUIView(myNSExtensionContext: self.extensionContext)
 
         // Créer un contrôleur d'hôte SwiftUI
         let hostingController = UIHostingController(rootView: swiftUIView)
@@ -34,7 +34,7 @@ class ShareViewController: UIViewController {
 struct MySwiftUIView: View {
     @State private var shareURL: URL?
     @State private var error: String = "no error"
-    var myNSExtensionItem: NSExtensionItem?
+    var myNSExtensionContext: NSExtensionContext?
 
     var body: some View {
         VStack {
@@ -42,17 +42,17 @@ struct MySwiftUIView: View {
             Text(shareURL?.absoluteString ?? "No URL found")
             Text("Error : \(error)")
             Button {
-//                self.error = "HEY"
-                if let inputItem = myNSExtensionItem,
-                   let itemProvider = inputItem.attachments?.first as? NSItemProvider {
-                       itemProvider.loadItem(forTypeIdentifier: "public.url", options: nil) { (url, error) in
-                           if let shareURL = url as? URL {
-                               // Do something with shareURL
-                               self.error = "\(shareURL)"
-                               self.shareURL = shareURL
-                           }
-                       }
-                }
+//                if let inputItem = myNSExtensionContext?.inputItems.first as? NSExtensionItem,
+//                   let itemProvider = inputItem.attachments?.first as? NSItemProvider {
+//                       itemProvider.loadItem(forTypeIdentifier: "public.url", options: nil) { (url, error) in
+//                           if let shareURL = url as? URL {
+//                               // Do something with shareURL
+//                               self.shareURL = shareURL
+//                           }
+//                       }
+//                }
+                
+                
 
             } label: {
                 Text("click me")
@@ -60,15 +60,15 @@ struct MySwiftUIView: View {
 
         }
         .onAppear {
-            if let inputItem = myNSExtensionItem, let itemProvider = inputItem.attachments?.first as? NSItemProvider {
-                itemProvider.loadItem(forTypeIdentifier: "public.url", options: nil) { (url, error) in
-                    if let shareURL = url as? URL {
-                        // Do something with shareURL
-                        self.error = "\(shareURL)"
-                        self.shareURL = shareURL
-                    }
-                }
-         }
+            if let inputItem = myNSExtensionContext?.inputItems.first as? NSExtensionItem,
+               let itemProvider = inputItem.attachments?.first as? NSItemProvider {
+                   itemProvider.loadItem(forTypeIdentifier: "public.url", options: nil) { (url, error) in
+                       if let shareURL = url as? URL {
+                           // Do something with shareURL
+                           self.shareURL = shareURL
+                       }
+                   }
+            }
         }
     }
 }
