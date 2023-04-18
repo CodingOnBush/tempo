@@ -12,7 +12,7 @@ class ShareViewController: UIViewController {
         super.viewDidLoad()
 
         // Créer une instance de la vue SwiftUI
-        let swiftUIView = MySwiftUIView()
+        let swiftUIView = MySwiftUIView(myNSExtensionItem: extensionContext?.inputItems.first as? NSExtensionItem)
 
         // Créer un contrôleur d'hôte SwiftUI
         let hostingController = UIHostingController(rootView: swiftUIView)
@@ -34,31 +34,41 @@ class ShareViewController: UIViewController {
 struct MySwiftUIView: View {
     @State private var shareURL: URL?
     @State private var error: String = "no error"
+    var myNSExtensionItem: NSExtensionItem?
 
     var body: some View {
         VStack {
             Text("Share Extension URL:")
             Text(shareURL?.absoluteString ?? "No URL found")
             Text("Error : \(error)")
+            Button {
+//                self.error = "HEY"
+                if let inputItem = myNSExtensionItem,
+                   let itemProvider = inputItem.attachments?.first as? NSItemProvider {
+                       itemProvider.loadItem(forTypeIdentifier: "public.url", options: nil) { (url, error) in
+                           if let shareURL = url as? URL {
+                               // Do something with shareURL
+                               self.error = "\(shareURL)"
+                               self.shareURL = shareURL
+                           }
+                       }
+                }
+
+            } label: {
+                Text("click me")
+            }
+
         }
         .onAppear {
-            let item = NSExtensionContext().inputItems.first as? NSExtensionItem
-            let itemProvider = item?.attachments?.first
-
-            if let urlType = URL(string: "public.url"), itemProvider?.hasItemConformingToTypeIdentifier(urlType.absoluteString) ?? false {
-                itemProvider?.loadItem(forTypeIdentifier: urlType.absoluteString, options: nil) { (url, error) in
+            if let inputItem = myNSExtensionItem, let itemProvider = inputItem.attachments?.first as? NSItemProvider {
+                itemProvider.loadItem(forTypeIdentifier: "public.url", options: nil) { (url, error) in
                     if let shareURL = url as? URL {
-                        self.error = "HEY"
-                        DispatchQueue.main.async {
-                            self.shareURL = shareURL
-                        }
-                    } else {
-                        DispatchQueue.main.async {
-                            self.error = "0 URL found"
-                        }
+                        // Do something with shareURL
+                        self.error = "\(shareURL)"
+                        self.shareURL = shareURL
                     }
                 }
-            }
+         }
         }
     }
 }
