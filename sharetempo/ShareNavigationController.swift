@@ -7,7 +7,6 @@
 
 import UIKit
 
-// 1: Set the `objc` annotation
 @objc(ShareNavigationController)
 class ShareNavigationController: UINavigationController {
 

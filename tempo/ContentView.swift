@@ -18,29 +18,28 @@ struct ContentView: View {
 
     var body: some View {
         NavigationView {
-            List {
-                ForEach(items) { item in
-                    NavigationLink {
-                        Text("Item at \(item.timestamp!, formatter: itemFormatter)")
-                    } label: {
-                        Text(item.timestamp!, formatter: itemFormatter)
+            VStack {
+//                NavigationLink(destination: AppInfoView(stringAppId: "1452526406")) {
+//                    Label("Open view", systemImage: "plus.circle")
+//                }
+                NavigationLink(destination: RootView()) {
+                    Label("Open view", systemImage: "plus.square")
+                }
+                Button(action: addItem) {
+                    Label("Add Item", systemImage: "plus")
+                }
+                
+                List {
+                    ForEach(items) { item in
+                        NavigationLink {
+                            Text("Item at \(item.timestamp!, formatter: itemFormatter)")
+                        } label: {
+                            Text(item.timestamp!, formatter: itemFormatter)
+                        }
                     }
-                }
-                .onDelete(perform: deleteItems)
-            }
-            .toolbar {
-#if os(iOS)
-                ToolbarItem(placement: .navigationBarTrailing) {
-                    EditButton()
-                }
-#endif
-                ToolbarItem {
-                    Button(action: addItem) {
-                        Label("Add Item", systemImage: "plus")
-                    }
+                    .onDelete(perform: deleteItems)
                 }
             }
-            Text("Select an item")
         }
     }
 
