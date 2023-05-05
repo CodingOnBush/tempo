@@ -1,5 +1,5 @@
 //
-//  AppInfo.swift
+//  AppInfoFetched.swift
 //  tempo
 //
 //  Created by VegaPunk on 23/04/2023.
@@ -13,58 +13,58 @@ struct AppInfoFetched: Codable {
 }
 
 struct AppDetails: Codable {
-    let trackId: Int?
-    let sellerName: String?
     let trackName: String?
-    let artistName: String?
-    let artworkUrl100: URL?
     let description: String?
-    let averageUserRating: Double?
-    let userRatingCount: Int?
-    let genres: [String]?
     let version: String?
-    let currentVersionReleaseDate: String?
-    let releaseNotes: String?
-    let minimumOsVersion: String?
-    let fileSizeBytes: String?
-    let supportedDevices: [String]?
-    let screenshotUrls: [String]?
-    let ipadScreenshotUrls: [String]?
-    let appletvScreenshotUrls: [String]?
-    let languageCodesISO2A: [String]?
-    let contentAdvisoryRating: String?
-    let trackViewUrl: String?
-    let trackContentRating: String?
-    let formattedPrice: String?
-    let price: Float?
-    let currency: String?
-    let bundleId: String?
-    let isVppDeviceBasedLicensingEnabled: Bool?
+    let sellerName: String?
+    let artworkUrl512: URL?
+    let trackId: Int?
     let primaryGenreName: String?
     let primaryGenreId: Int?
-    let releaseDate: String?
+    let averageUserRating: Double?
+    let userRatingCount: Int?
+    let price: Float?
     let sellerUrl: String?
-    let sellerId: Int?
-    let artistId: Int?
-    let artistViewUrl: String?
-    let advisoryRating: String?
-    let features: [String]?
-    let supportedCountries: [String]?
-    let kind: String?
-    let trackCensoredName: String?
-    let trackViewUrlComponents: URLComponents?
-    let userRatingCountForCurrentVersion: Int?
-    let averageUserRatingForCurrentVersion: Float?
-    let isGameCenterEnabled: Bool?
-    let hasWatchKitExtension: Bool?
-    let watchKitExtensionSupportedDevices: [String]?
-    let watchKitAppVersion: String?
-    let watchKitAppExecutableURL: String?
-    let watchKitAppExecutableArchitecture: String?
-    let appletvPrivacyPolicyURL: String?
-    let appletvPrivacyPolicyText: String?
-    let appletvSiriEnabled: Bool?
-    let appletvSiriExplicitEnabled: Bool?
-    let genreIds: [String]?
-    let featuresString: String?
+    let screenshotUrls: [String]?
+    let releaseNotes: String?
+    let currentVersionReleaseDate: String?
+//    let artistName: String?
+//    let genres: [String]?
+//    let minimumOsVersion: String?
+//    let fileSizeBytes: String?
+//    let supportedDevices: [String]?
+//    let ipadScreenshotUrls: [String]?
+//    let appletvScreenshotUrls: [String]?
+//    let languageCodesISO2A: [String]?
+//    let contentAdvisoryRating: String?
+//    let trackViewUrl: String?
+//    let trackContentRating: String?
+//    let formattedPrice: String?
+//    let currency: String?
+//    let bundleId: String?
+//    let isVppDeviceBasedLicensingEnabled: Bool?
+//    let releaseDate: String?
+//    let sellerId: Int?
+//    let artistId: Int?
+//    let artistViewUrl: String?
+//    let advisoryRating: String?
+//    let features: [String]?
+//    let supportedCountries: [String]?
+//    let kind: String?
+//    let trackCensoredName: String?
+//    let trackViewUrlComponents: URLComponents?
+//    let userRatingCountForCurrentVersion: Int?
+//    let averageUserRatingForCurrentVersion: Float?
+//    let isGameCenterEnabled: Bool?
+//    let hasWatchKitExtension: Bool?
+//    let watchKitExtensionSupportedDevices: [String]?
+//    let watchKitAppVersion: String?
+//    let watchKitAppExecutableURL: String?
+//    let watchKitAppExecutableArchitecture: String?
+//    let appletvPrivacyPolicyURL: String?
+//    let appletvPrivacyPolicyText: String?
+//    let appletvSiriEnabled: Bool?
+//    let appletvSiriExplicitEnabled: Bool?
+//    let genreIds: [String]?
+//    let featuresString: String?
 }

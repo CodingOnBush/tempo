@@ -18,8 +18,8 @@
 		46AF379E29FF03670076982E /* AppInfoFetched.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46DE82E029F5AC9F00A7869A /* AppInfoFetched.swift */; };
 		46AF379F29FF0EB10076982E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 46BD14E529E2767900C3BBE4 /* Assets.xcassets */; };
 		46AF37A429FF18470076982E /* AppStoreAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46DE82ED29F5B11800A7869A /* AppStoreAPI.swift */; };
-		46AF37A629FF18AE0076982E /* AppInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46AF37A529FF18AE0076982E /* AppInfo.swift */; };
-		46AF37A729FF18F40076982E /* AppInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46AF37A529FF18AE0076982E /* AppInfo.swift */; };
+		46AF37A629FF18AE0076982E /* AppModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46AF37A529FF18AE0076982E /* AppModel.swift */; };
+		46AF37A729FF18F40076982E /* AppModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46AF37A529FF18AE0076982E /* AppModel.swift */; };
 		46BCA5CB29F8421400D07989 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46BCA5CA29F8421400D07989 /* HomeView.swift */; };
 		46BD14DD29E2767900C3BBE4 /* tempoApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46BD14DC29E2767900C3BBE4 /* tempoApp.swift */; };
 		46BD14DF29E2767900C3BBE4 /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46BD14DE29E2767900C3BBE4 /* Persistence.swift */; };
@@ -67,7 +67,7 @@
 		46AB95BE29E2E5670003A3F4 /* sharetempo.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = sharetempo.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		46AB95C029E2E5670003A3F4 /* ShareViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareViewController.swift; sourceTree = "<group>"; };
 		46AB95C529E2E5670003A3F4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		46AF37A529FF18AE0076982E /* AppInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppInfo.swift; sourceTree = "<group>"; };
+		46AF37A529FF18AE0076982E /* AppModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppModel.swift; sourceTree = "<group>"; };
 		46BCA5CA29F8421400D07989 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		46BD14D929E2767900C3BBE4 /* tempo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = tempo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		46BD14DC29E2767900C3BBE4 /* tempoApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = tempoApp.swift; sourceTree = "<group>"; };
@@ -164,7 +164,7 @@
 			isa = PBXGroup;
 			children = (
 				46DE82E029F5AC9F00A7869A /* AppInfoFetched.swift */,
-				46AF37A529FF18AE0076982E /* AppInfo.swift */,
+				46AF37A529FF18AE0076982E /* AppModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -302,7 +302,7 @@
 				46AF379E29FF03670076982E /* AppInfoFetched.swift in Sources */,
 				46AF37A429FF18470076982E /* AppStoreAPI.swift in Sources */,
 				460366772A02BCBA00767788 /* ShareSheetView.swift in Sources */,
-				46AF37A729FF18F40076982E /* AppInfo.swift in Sources */,
+				46AF37A729FF18F40076982E /* AppModel.swift in Sources */,
 				46A5D85729E7C29F00C541CE /* CoreData.swift in Sources */,
 				46DD0C1829E51A2F00DBC94C /* ShareNavigationController.swift in Sources */,
 			);
@@ -325,7 +325,7 @@
 				46DE82E129F5AC9F00A7869A /* AppInfoFetched.swift in Sources */,
 				465882DC29F8D4C600E2DF56 /* RootView.swift in Sources */,
 				465882E029F8D5BA00E2DF56 /* AppsView.swift in Sources */,
-				46AF37A629FF18AE0076982E /* AppInfo.swift in Sources */,
+				46AF37A629FF18AE0076982E /* AppModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
