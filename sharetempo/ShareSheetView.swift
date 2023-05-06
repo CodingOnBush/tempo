@@ -19,47 +19,37 @@ import SwiftUI
 //
 //Ces états peuvent être utilisés pour mettre à jour l'interface utilisateur en fonction de l'état de la tâche asynchrone. Par exemple, on peut afficher un indicateur de chargement quand la tâche est en cours d'exécution (`running`), afficher le résultat de la tâche quand elle a réussi (`success`), ou afficher un message d'erreur quand elle a échoué (`failure`).
 
+enum ViewState {
+    case idle
+    case loading
+    case loaded
+    case noURL
+}
+
 struct ShareSheetView: View {
     var context: NSExtensionContext?
     @StateObject var currentApp = AppModel()
-    @State var toPrint = "empty"
-    @State var viewState = "loading"
+    @State var isValidURL: Bool = false
+    @State var viewState: ViewState = .idle
     
     var body: some View {
         ZStack {
-            Color(red: 0.89, green: 0.89, blue: 0.89)
-                .ignoresSafeArea()
-            switch self.currentApp.isValideURL {
-            case true :
-                VStack {
-                    Text("print : \(toPrint)")
-                    HStack {
-                        self.currentApp.appIcon?
-                            .resizable()
-                            .frame(width: 100, height: 100)
-                            .cornerRadius(16)
-                        
-                        VStack(alignment: .leading, spacing: 5) {
-                            Text(self.currentApp.name ?? "app name")
-                                .font(.headline)
-                            Text(self.currentApp.appstoreURL?.absoluteString ?? "no url found")
-                                .font(.subheadline)
-                        }
-                        .padding(.leading, 16)
-                    }
-                    .padding(18)
-                    .background(Color.white)
-                    .cornerRadius(8)
+            if self.isValidURL == false {
+                WrongURLView()
+            } else {
+                switch self.viewState {
+                case .idle, .loading:
+                    ProgressView()
+                case .loaded:
+                    AddingAppView(app: currentApp)
+                default:
+                    ProgressView()
                 }
-            case false:
-                Text("false")
-            case nil:
-                Text("nil")
-            default:
-                Text("default")
             }
-            
-        }.onAppear(perform: self.loadMaxData)
+        }.onAppear {
+            self.viewState = .loading
+            self.loadMaxData()
+        }
     }
     
     func loadImage(from url: URL?) {
@@ -105,6 +95,7 @@ struct ShareSheetView: View {
                             
                             self.loadImage(from: self.currentApp.iconURL)
                             
+                            self.viewState = .loaded
                         } catch {
                             print(error.localizedDescription)
                         }
@@ -132,8 +123,9 @@ struct ShareSheetView: View {
                                 if let shareURL = url as? URL {
                                     // Do something with the URL
                                     self.currentApp.appstoreURL = shareURL
-                                    self.currentApp.isValideURL = shareURL.absoluteString.hasPrefix("https://apps.apple.com")
+                                    self.currentApp.isValidURL = shareURL.absoluteString.hasPrefix("https://apps.apple.com")
                                     self.fetchAppData(from: shareURL)
+                                    self.isValidURL = shareURL.absoluteString.hasPrefix("https://apps.apple.com")
                                 }
                             }
                         }

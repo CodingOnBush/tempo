@@ -26,7 +26,7 @@ class AppModel: ObservableObject {
     
     @Published var appIcon: Image?
     @Published var appstoreURL: URL?
-    @Published var isValideURL: Bool?
+    @Published var isValidURL: Bool?
     @Published var artworkURLString: String?
     
 }

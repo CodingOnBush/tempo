@@ -32,6 +32,8 @@
 		46DE82EA29F5AFD800A7869A /* AppInfoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46DE82E929F5AFD800A7869A /* AppInfoViewModel.swift */; };
 		46DE82EC29F5AFF900A7869A /* AppInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46DE82EB29F5AFF900A7869A /* AppInfoView.swift */; };
 		46DE82EE29F5B11800A7869A /* AppStoreAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46DE82ED29F5B11800A7869A /* AppStoreAPI.swift */; };
+		46EEFC6F2A068FA500839BA9 /* WrongURLView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46EEFC6E2A068FA500839BA9 /* WrongURLView.swift */; };
+		46EEFC712A06900900839BA9 /* AddingAppView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46EEFC702A06900900839BA9 /* AddingAppView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -83,6 +85,8 @@
 		46DE82E929F5AFD800A7869A /* AppInfoViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppInfoViewModel.swift; sourceTree = "<group>"; };
 		46DE82EB29F5AFF900A7869A /* AppInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppInfoView.swift; sourceTree = "<group>"; };
 		46DE82ED29F5B11800A7869A /* AppStoreAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppStoreAPI.swift; sourceTree = "<group>"; };
+		46EEFC6E2A068FA500839BA9 /* WrongURLView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WrongURLView.swift; sourceTree = "<group>"; };
+		46EEFC702A06900900839BA9 /* AddingAppView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddingAppView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -111,6 +115,8 @@
 				46AB95C529E2E5670003A3F4 /* Info.plist */,
 				46DD0C1729E51A2F00DBC94C /* ShareNavigationController.swift */,
 				460366762A02BCBA00767788 /* ShareSheetView.swift */,
+				46EEFC6E2A068FA500839BA9 /* WrongURLView.swift */,
+				46EEFC702A06900900839BA9 /* AddingAppView.swift */,
 			);
 			path = sharetempo;
 			sourceTree = "<group>";
@@ -298,11 +304,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				46EEFC6F2A068FA500839BA9 /* WrongURLView.swift in Sources */,
 				46AB95C129E2E5670003A3F4 /* ShareViewController.swift in Sources */,
 				46AF379E29FF03670076982E /* AppInfoFetched.swift in Sources */,
 				46AF37A429FF18470076982E /* AppStoreAPI.swift in Sources */,
 				460366772A02BCBA00767788 /* ShareSheetView.swift in Sources */,
 				46AF37A729FF18F40076982E /* AppModel.swift in Sources */,
+				46EEFC712A06900900839BA9 /* AddingAppView.swift in Sources */,
 				46A5D85729E7C29F00C541CE /* CoreData.swift in Sources */,
 				46DD0C1829E51A2F00DBC94C /* ShareNavigationController.swift in Sources */,
 			);
