@@ -18,7 +18,7 @@ enum AppStoreAPIError: Error {
 class AppStoreAPI {
     static let baseURL = "https://itunes.apple.com/lookup?id="
 
-    static func fetchAppInfo(from appURL: URL, completion: @escaping (Result<AppInfoFetched, AppStoreAPIError>) -> Void) {
+    static func fetchAppInfo(from appURL: URL, completion: @escaping (Result<LookupResult, AppStoreAPIError>) -> Void) {
         // Récupérer l'ID de l'application
 //        guard let appID = appURL.lastPathComponent.split(separator: "=").last else {
 //            completion(.failure(.noAppID))
@@ -61,7 +61,7 @@ class AppStoreAPI {
             // Essayer de décoder les données en utilisant le type AppInfoFetched
             do {
                 let decoder = JSONDecoder()
-                let appInfoFetched = try decoder.decode(AppInfoFetched.self, from: safeData)
+                let appInfoFetched = try decoder.decode(LookupResult.self, from: safeData)
                 completion(.success(appInfoFetched))
             } catch {
                 completion(.failure(.decodingError))

@@ -7,7 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4602AC5E2A09A8E6003D2CD7 /* AppModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4602AC5D2A09A8E6003D2CD7 /* AppModel.swift */; };
 		460366772A02BCBA00767788 /* ShareSheetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 460366762A02BCBA00767788 /* ShareSheetView.swift */; };
+		4606162A2A0DABB4007F43FC /* AppModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4602AC5D2A09A8E6003D2CD7 /* AppModel.swift */; };
 		465882DC29F8D4C600E2DF56 /* RootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 465882DB29F8D4C600E2DF56 /* RootView.swift */; };
 		465882DE29F8D57600E2DF56 /* LibraryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 465882DD29F8D57600E2DF56 /* LibraryView.swift */; };
 		465882E029F8D5BA00E2DF56 /* AppsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 465882DF29F8D5BA00E2DF56 /* AppsView.swift */; };
@@ -15,11 +17,9 @@
 		46A5D85729E7C29F00C541CE /* CoreData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46A5D85529E7C1FA00C541CE /* CoreData.swift */; };
 		46AB95C129E2E5670003A3F4 /* ShareViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46AB95C029E2E5670003A3F4 /* ShareViewController.swift */; };
 		46AB95C829E2E5670003A3F4 /* sharetempo.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 46AB95BE29E2E5670003A3F4 /* sharetempo.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
-		46AF379E29FF03670076982E /* AppInfoFetched.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46DE82E029F5AC9F00A7869A /* AppInfoFetched.swift */; };
+		46AF379E29FF03670076982E /* LookupResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46DE82E029F5AC9F00A7869A /* LookupResult.swift */; };
 		46AF379F29FF0EB10076982E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 46BD14E529E2767900C3BBE4 /* Assets.xcassets */; };
 		46AF37A429FF18470076982E /* AppStoreAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46DE82ED29F5B11800A7869A /* AppStoreAPI.swift */; };
-		46AF37A629FF18AE0076982E /* AppModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46AF37A529FF18AE0076982E /* AppModel.swift */; };
-		46AF37A729FF18F40076982E /* AppModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46AF37A529FF18AE0076982E /* AppModel.swift */; };
 		46BCA5CB29F8421400D07989 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46BCA5CA29F8421400D07989 /* HomeView.swift */; };
 		46BD14DD29E2767900C3BBE4 /* tempoApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46BD14DC29E2767900C3BBE4 /* tempoApp.swift */; };
 		46BD14DF29E2767900C3BBE4 /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46BD14DE29E2767900C3BBE4 /* Persistence.swift */; };
@@ -28,10 +28,11 @@
 		46BD14E629E2767900C3BBE4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 46BD14E529E2767900C3BBE4 /* Assets.xcassets */; };
 		46BD14EA29E2767900C3BBE4 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 46BD14E929E2767900C3BBE4 /* Preview Assets.xcassets */; };
 		46DD0C1829E51A2F00DBC94C /* ShareNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46DD0C1729E51A2F00DBC94C /* ShareNavigationController.swift */; };
-		46DE82E129F5AC9F00A7869A /* AppInfoFetched.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46DE82E029F5AC9F00A7869A /* AppInfoFetched.swift */; };
+		46DE82E129F5AC9F00A7869A /* LookupResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46DE82E029F5AC9F00A7869A /* LookupResult.swift */; };
 		46DE82EA29F5AFD800A7869A /* AppInfoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46DE82E929F5AFD800A7869A /* AppInfoViewModel.swift */; };
 		46DE82EC29F5AFF900A7869A /* AppInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46DE82EB29F5AFF900A7869A /* AppInfoView.swift */; };
 		46DE82EE29F5B11800A7869A /* AppStoreAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46DE82ED29F5B11800A7869A /* AppStoreAPI.swift */; };
+		46EED9ED2A06E2C100899175 /* tempo.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 46BD14E029E2767900C3BBE4 /* tempo.xcdatamodeld */; };
 		46EEFC6F2A068FA500839BA9 /* WrongURLView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46EEFC6E2A068FA500839BA9 /* WrongURLView.swift */; };
 		46EEFC712A06900900839BA9 /* AddingAppView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46EEFC702A06900900839BA9 /* AddingAppView.swift */; };
 /* End PBXBuildFile section */
@@ -61,6 +62,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		4602AC5D2A09A8E6003D2CD7 /* AppModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppModel.swift; sourceTree = "<group>"; };
 		460366762A02BCBA00767788 /* ShareSheetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareSheetView.swift; sourceTree = "<group>"; };
 		465882DB29F8D4C600E2DF56 /* RootView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootView.swift; sourceTree = "<group>"; };
 		465882DD29F8D57600E2DF56 /* LibraryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibraryView.swift; sourceTree = "<group>"; };
@@ -69,7 +71,6 @@
 		46AB95BE29E2E5670003A3F4 /* sharetempo.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = sharetempo.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		46AB95C029E2E5670003A3F4 /* ShareViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareViewController.swift; sourceTree = "<group>"; };
 		46AB95C529E2E5670003A3F4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		46AF37A529FF18AE0076982E /* AppModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppModel.swift; sourceTree = "<group>"; };
 		46BCA5CA29F8421400D07989 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		46BD14D929E2767900C3BBE4 /* tempo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = tempo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		46BD14DC29E2767900C3BBE4 /* tempoApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = tempoApp.swift; sourceTree = "<group>"; };
@@ -81,7 +82,7 @@
 		46BD14E929E2767900C3BBE4 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		46DD0C1729E51A2F00DBC94C /* ShareNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareNavigationController.swift; sourceTree = "<group>"; };
 		46DD0C1929E5407300DBC94C /* sharetempo.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = sharetempo.entitlements; sourceTree = "<group>"; };
-		46DE82E029F5AC9F00A7869A /* AppInfoFetched.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppInfoFetched.swift; sourceTree = "<group>"; };
+		46DE82E029F5AC9F00A7869A /* LookupResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LookupResult.swift; sourceTree = "<group>"; };
 		46DE82E929F5AFD800A7869A /* AppInfoViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppInfoViewModel.swift; sourceTree = "<group>"; };
 		46DE82EB29F5AFF900A7869A /* AppInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppInfoView.swift; sourceTree = "<group>"; };
 		46DE82ED29F5B11800A7869A /* AppStoreAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppStoreAPI.swift; sourceTree = "<group>"; };
@@ -169,8 +170,8 @@
 		46DE82E229F5AEB300A7869A /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				46DE82E029F5AC9F00A7869A /* AppInfoFetched.swift */,
-				46AF37A529FF18AE0076982E /* AppModel.swift */,
+				46DE82E029F5AC9F00A7869A /* LookupResult.swift */,
+				4602AC5D2A09A8E6003D2CD7 /* AppModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -306,11 +307,12 @@
 			files = (
 				46EEFC6F2A068FA500839BA9 /* WrongURLView.swift in Sources */,
 				46AB95C129E2E5670003A3F4 /* ShareViewController.swift in Sources */,
-				46AF379E29FF03670076982E /* AppInfoFetched.swift in Sources */,
+				4606162A2A0DABB4007F43FC /* AppModel.swift in Sources */,
+				46AF379E29FF03670076982E /* LookupResult.swift in Sources */,
 				46AF37A429FF18470076982E /* AppStoreAPI.swift in Sources */,
 				460366772A02BCBA00767788 /* ShareSheetView.swift in Sources */,
-				46AF37A729FF18F40076982E /* AppModel.swift in Sources */,
 				46EEFC712A06900900839BA9 /* AddingAppView.swift in Sources */,
+				46EED9ED2A06E2C100899175 /* tempo.xcdatamodeld in Sources */,
 				46A5D85729E7C29F00C541CE /* CoreData.swift in Sources */,
 				46DD0C1829E51A2F00DBC94C /* ShareNavigationController.swift in Sources */,
 			);
@@ -323,6 +325,7 @@
 				46BD14DD29E2767900C3BBE4 /* tempoApp.swift in Sources */,
 				46BD14DF29E2767900C3BBE4 /* Persistence.swift in Sources */,
 				46DE82EC29F5AFF900A7869A /* AppInfoView.swift in Sources */,
+				4602AC5E2A09A8E6003D2CD7 /* AppModel.swift in Sources */,
 				46BCA5CB29F8421400D07989 /* HomeView.swift in Sources */,
 				465882DE29F8D57600E2DF56 /* LibraryView.swift in Sources */,
 				46DE82EE29F5B11800A7869A /* AppStoreAPI.swift in Sources */,
@@ -330,10 +333,9 @@
 				46BD14E229E2767900C3BBE4 /* tempo.xcdatamodeld in Sources */,
 				46A5D85629E7C1FA00C541CE /* CoreData.swift in Sources */,
 				46DE82EA29F5AFD800A7869A /* AppInfoViewModel.swift in Sources */,
-				46DE82E129F5AC9F00A7869A /* AppInfoFetched.swift in Sources */,
+				46DE82E129F5AC9F00A7869A /* LookupResult.swift in Sources */,
 				465882DC29F8D4C600E2DF56 /* RootView.swift in Sources */,
 				465882E029F8D5BA00E2DF56 /* AppsView.swift in Sources */,
-				46AF37A629FF18AE0076982E /* AppModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

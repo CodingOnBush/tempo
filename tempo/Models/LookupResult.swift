@@ -7,12 +7,12 @@
 
 import Foundation
 
-struct AppInfoFetched: Codable {
+struct LookupResult: Codable {
     let resultCount: Int
-    let results: [AppDetails]
+    let results: [AppInfo]
 }
 
-struct AppDetails: Codable {
+struct AppInfo: Codable {
     let trackName: String?
     let description: String?
     let version: String?

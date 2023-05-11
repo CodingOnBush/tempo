@@ -7,17 +7,7 @@
 
 import Foundation
 import SwiftUI
-
-//En utilisant la bibliothèque SwiftUI et le framework Combine, on peut utiliser un `@State` variable avec le type `Task<Output, Failure>` pour représenter un état d'une tâche asynchrone.
-//
-//Les différents états sont :
-//
-//- `idle` : l'état initial de la tâche, où rien ne s'est encore passé
-//- `running` : l'état où la tâche est en cours d'exécution
-//- `success(Output)` : l'état où la tâche a réussi et a produit une valeur de type `Output`
-//- `failure(Failure)` : l'état où la tâche a échoué et a produit une erreur de type `Failure`
-//
-//Ces états peuvent être utilisés pour mettre à jour l'interface utilisateur en fonction de l'état de la tâche asynchrone. Par exemple, on peut afficher un indicateur de chargement quand la tâche est en cours d'exécution (`running`), afficher le résultat de la tâche quand elle a réussi (`success`), ou afficher un message d'erreur quand elle a échoué (`failure`).
+import CoreData
 
 enum ViewState {
     case idle
@@ -28,12 +18,13 @@ enum ViewState {
 
 struct ShareSheetView: View {
     var context: NSExtensionContext?
-    @StateObject var currentApp = AppModel()
+    var currentApp = AppModel()
     @State var isValidURL: Bool = false
     @State var viewState: ViewState = .idle
     
+    
     var body: some View {
-        ZStack {
+        VStack {
             if self.isValidURL == false {
                 WrongURLView()
             } else {
@@ -50,6 +41,12 @@ struct ShareSheetView: View {
             self.viewState = .loading
             self.loadMaxData()
         }
+        Button {
+            self.context?.completeRequest(returningItems: nil, completionHandler: nil)
+        } label: {
+            Text("Add")
+        }
+
     }
     
     func loadImage(from url: URL?) {
@@ -72,28 +69,28 @@ struct ShareSheetView: View {
                 URLSession.shared.dataTask(with: url) { data, _, error in
                     if let safeData = data {
                         do {
-                            let appInfoDecoded = try JSONDecoder().decode(AppInfoFetched.self, from: safeData)
+                            let appInfoDecoded = try JSONDecoder().decode(LookupResult.self, from: safeData)
                             let appDetailsFetched = appInfoDecoded.results.first
                             
-                            self.currentApp.name = appDetailsFetched?.trackName
+                            self.currentApp.trackName = appDetailsFetched?.trackName
                             self.currentApp.description = appDetailsFetched?.description
                             self.currentApp.version = appDetailsFetched?.version
                             self.currentApp.sellerName = appDetailsFetched?.sellerName
-                            
-                            self.currentApp.iconURL = appDetailsFetched?.artworkUrl512
-                            self.currentApp.id = appDetailsFetched?.trackId
+                        
+                            self.currentApp.artworkUrl512 = appDetailsFetched?.artworkUrl512
+                            self.currentApp.trackId = appDetailsFetched?.trackId
                             self.currentApp.primaryGenreName = appDetailsFetched?.primaryGenreName
                             self.currentApp.primaryGenreId = appDetailsFetched?.primaryGenreId
                             self.currentApp.averageUserRating = appDetailsFetched?.averageUserRating
-                            
+                        
                             self.currentApp.userRatingCount = appDetailsFetched?.userRatingCount
                             self.currentApp.price = appDetailsFetched?.price
                             self.currentApp.sellerUrl = appDetailsFetched?.sellerUrl
                             self.currentApp.screenshotUrls = appDetailsFetched?.screenshotUrls
-                            self.currentApp.lastReleaseNotes = appDetailsFetched?.currentVersionReleaseDate
-                            self.currentApp.lastReleaseDate = appDetailsFetched?.currentVersionReleaseDate
+                            self.currentApp.currentVersionReleaseDate = appDetailsFetched?.currentVersionReleaseDate
+                            self.currentApp.currentVersionReleaseDate = appDetailsFetched?.currentVersionReleaseDate
                             
-                            self.loadImage(from: self.currentApp.iconURL)
+                            self.loadImage(from: self.currentApp.artworkUrl512)
                             
                             self.viewState = .loaded
                         } catch {
@@ -104,6 +101,7 @@ struct ShareSheetView: View {
             }
         }
     }
+
     
     private func extractIdFromLink(_ link: String) -> String? {
         if let range = link.range(of: "id\\d+", options: .regularExpression) {
