@@ -13,7 +13,7 @@ class CoreDataStack {
     }
     
     private lazy var persistentContainer: NSPersistentContainer = {
-        let container = NSPersistentContainer(name: "MyAppName")
+        let container = NSPersistentContainer(name: "tempo")
         container.loadPersistentStores { (_, error) in
             if let error = error {
                 fatalError("Unresolved error \(error)")
@@ -27,7 +27,8 @@ class CoreDataStack {
             do {
                 try viewContext.save()
             } catch let error as NSError {
-                fatalError("Unresolved error \(error), \(error.userInfo)")
+//                fatalError("Unresolved error \(error), \(error.userInfo)")
+                print("Erreur lors de l'enregistrement de l'instance dans Core Data : \(error.localizedDescription)")
             }
         }
     }

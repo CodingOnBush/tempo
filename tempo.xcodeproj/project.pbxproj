@@ -154,11 +154,11 @@
 				46BD14E729E2767900C3BBE4 /* tempo.entitlements */,
 				46BD14E029E2767900C3BBE4 /* tempo.xcdatamodeld */,
 				46A5D85529E7C1FA00C541CE /* CoreData.swift */,
+				460E3A332A0EDC6100436AF1 /* CoreDataStack.swift */,
 				46DE82E229F5AEB300A7869A /* Models */,
 				46DE82EF29F5B28800A7869A /* Networking */,
 				46DE82E829F5AFCA00A7869A /* ViewModels */,
 				46DE82E529F5AEDC00A7869A /* Views */,
-				460E3A332A0EDC6100436AF1 /* CoreDataStack.swift */,
 			);
 			path = tempo;
 			sourceTree = "<group>";

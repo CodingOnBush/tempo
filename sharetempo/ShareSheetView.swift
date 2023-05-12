@@ -52,35 +52,13 @@ struct ShareSheetView: View {
         }.onAppear {
             self.viewState = .loading
             self.loadMaxData()
-            
-            
-            
-            // Créer une instance du CoreDataStack
-            let coreDataStack = CoreDataStack()
-            
-            // Créer une instance de votre NSManagedObject
-            let entity = NSEntityDescription.entity(forEntityName: "NomDeVotreEntity", in: coreDataStack.managedContext)!
-            let instance = NomDeVotreEntity(entity: entity, insertInto: coreDataStack.managedContext)
-
-            // Configurez les propriétés de votre instance
-            instance.property1 = "valeur1"
-            instance.property2 = "valeur2"
-            // ...
-
-            // Enregistrez les changements dans Core Data
-            do {
-                try coreDataStack.managedContext.save()
-            } catch let error as NSError {
-                print("Erreur lors de l'enregistrement de l'instance dans Core Data : \(error.localizedDescription)")
-            }
-
         }
         
         Button {
             self.state = .loading
             
-            self.context?.completeRequest(returningItems: nil, completionHandler: nil)
             localSaveApp()
+//            self.context?.completeRequest(returningItems: nil, completionHandler: nil)
             
             self.state = .viewWillClose
         } label: {
@@ -94,7 +72,32 @@ struct ShareSheetView: View {
     }
     
     private func localSaveApp() {
-        // enregistrer l'app
+        // Créer une instance du CoreDataStack
+        let coreDataStack = CoreDataStack()
+        
+        // Créer une instance de votre NSManagedObject
+        guard let entity = NSEntityDescription.entity(forEntityName: "AppModelItem", in: coreDataStack.viewContext) else {
+            fatalError("Impossible de récupérer l'entité MyEntity")
+//            print("Impossible de récupérer l'entité MyEntity")
+        }
+
+        let instance = AppModelItem(entity: entity, insertInto: coreDataStack.viewContext)
+
+        instance.timestamp = Date()
+        instance.id = self.currentApp.id
+        instance.trackName = self.currentApp.trackName
+        // ... le faire pour tout
+
+        // Enregistrez les changements dans Core Data
+//        coreDataStack.saveContext()
+        
+        do {
+            try coreDataStack.viewContext.save()
+            print("SAVED ?")
+        } catch let error as NSError {
+//                fatalError("Unresolved error \(error), \(error.userInfo)")
+            print("Erreur lors de l'enregistrement de l'instance dans Core Data : \(error.localizedDescription)")
+        }
     }
     
     private func buttonContent() -> some View {

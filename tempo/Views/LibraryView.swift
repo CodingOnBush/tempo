@@ -6,10 +6,28 @@
 //
 
 import SwiftUI
+import CoreData
 
 struct LibraryView: View {
+    // Injectez l'instance du CoreDataStack
+    @Environment(\.managedObjectContext) private var viewContext
+    
+    // Créez une requête pour récupérer toutes les instances d'AppModelItem
+    @FetchRequest(sortDescriptors: [])
+    private var items: FetchedResults<AppModelItem>
+    
+    
+    
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        NavigationView {
+            List {
+                // Affichez chaque instance dans la liste
+                ForEach(items) { item in
+                    Text(item.trackName ?? "Untitled")
+                }
+            }
+            .navigationTitle("My Data")
+        }
     }
 }
 

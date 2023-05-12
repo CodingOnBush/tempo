@@ -14,7 +14,7 @@ struct ContentView: View {
     @FetchRequest(
         sortDescriptors: [NSSortDescriptor(keyPath: \Item.timestamp, ascending: true)],
         animation: .default)
-    private var items: FetchedResults<Item>
+    private var items: FetchedResults<AppModelItem>
 
     var body: some View {
         NavigationView {
@@ -22,23 +22,26 @@ struct ContentView: View {
 //                NavigationLink(destination: AppInfoView(stringAppId: "1452526406")) {
 //                    Label("Open view", systemImage: "plus.circle")
 //                }
-                NavigationLink(destination: RootView()) {
-                    Label("Open view", systemImage: "plus.square")
-                }
-                Button(action: addItem) {
-                    Label("Add Item", systemImage: "plus")
-                }
+//                NavigationLink(destination: RootView()) {
+//                    Label("Open view", systemImage: "plus.square")
+//                }
+//                Button(action: addItem) {
+//                    Label("Add Item", systemImage: "plus")
+//                }
                 
                 List {
                     ForEach(items) { item in
-                        NavigationLink {
-                            Text("Item at \(item.timestamp!, formatter: itemFormatter)")
-                        } label: {
-                            Text(item.timestamp!, formatter: itemFormatter)
-                        }
+                        Text("app name : \(item.trackName!)")
+//                        NavigationLink {
+//                            Text("Item at \(item.timestamp!, formatter: itemFormatter)")
+//                        } label: {
+//                            Text("\(item.trackName!)")
+//                        }
                     }
                     .onDelete(perform: deleteItems)
                 }
+            }.onAppear {
+                print("first app : \(String(describing: self.items.first?.trackName))")
             }
         }
     }
