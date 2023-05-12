@@ -16,7 +16,19 @@ enum ViewState {
     case noURL
 }
 
+
 struct ShareSheetView: View {
+    // Enumeration des différents états
+    enum MyStates {
+        case idle
+        case loading
+        case viewWillClose
+        case error
+    }
+    
+    // Etat initial est "idle"
+    @State var state: MyStates = .idle
+    
     var context: NSExtensionContext?
     var currentApp = AppModel()
     @State var isValidURL: Bool = false
@@ -40,13 +52,62 @@ struct ShareSheetView: View {
         }.onAppear {
             self.viewState = .loading
             self.loadMaxData()
-        }
-        Button {
-            self.context?.completeRequest(returningItems: nil, completionHandler: nil)
-        } label: {
-            Text("Add")
-        }
+            
+            
+            
+            // Créer une instance du CoreDataStack
+            let coreDataStack = CoreDataStack()
+            
+            // Créer une instance de votre NSManagedObject
+            let entity = NSEntityDescription.entity(forEntityName: "NomDeVotreEntity", in: coreDataStack.managedContext)!
+            let instance = NomDeVotreEntity(entity: entity, insertInto: coreDataStack.managedContext)
 
+            // Configurez les propriétés de votre instance
+            instance.property1 = "valeur1"
+            instance.property2 = "valeur2"
+            // ...
+
+            // Enregistrez les changements dans Core Data
+            do {
+                try coreDataStack.managedContext.save()
+            } catch let error as NSError {
+                print("Erreur lors de l'enregistrement de l'instance dans Core Data : \(error.localizedDescription)")
+            }
+
+        }
+        
+        Button {
+            self.state = .loading
+            
+            self.context?.completeRequest(returningItems: nil, completionHandler: nil)
+            localSaveApp()
+            
+            self.state = .viewWillClose
+        } label: {
+            buttonContent()
+                .foregroundColor(.white)
+                .padding()
+                .background(.purple)
+                .cornerRadius(8)
+        }
+        
+    }
+    
+    private func localSaveApp() {
+        // enregistrer l'app
+    }
+    
+    private func buttonContent() -> some View {
+        switch self.state {
+        case .idle:
+            return AnyView(Text("Start Loading"))
+        case .loading:
+            return AnyView(ProgressView())
+        case .error:
+            return AnyView(Text("Error"))
+        case .viewWillClose:
+            return AnyView(Text("View closing"))
+        }
     }
     
     func loadImage(from url: URL?) {
@@ -76,13 +137,13 @@ struct ShareSheetView: View {
                             self.currentApp.description = appDetailsFetched?.description
                             self.currentApp.version = appDetailsFetched?.version
                             self.currentApp.sellerName = appDetailsFetched?.sellerName
-                        
+                            
                             self.currentApp.artworkUrl512 = appDetailsFetched?.artworkUrl512
                             self.currentApp.trackId = appDetailsFetched?.trackId
                             self.currentApp.primaryGenreName = appDetailsFetched?.primaryGenreName
                             self.currentApp.primaryGenreId = appDetailsFetched?.primaryGenreId
                             self.currentApp.averageUserRating = appDetailsFetched?.averageUserRating
-                        
+                            
                             self.currentApp.userRatingCount = appDetailsFetched?.userRatingCount
                             self.currentApp.price = appDetailsFetched?.price
                             self.currentApp.sellerUrl = appDetailsFetched?.sellerUrl
@@ -101,7 +162,7 @@ struct ShareSheetView: View {
             }
         }
     }
-
+    
     
     private func extractIdFromLink(_ link: String) -> String? {
         if let range = link.range(of: "id\\d+", options: .regularExpression) {

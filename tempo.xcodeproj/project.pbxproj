@@ -10,6 +10,8 @@
 		4602AC5E2A09A8E6003D2CD7 /* AppModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4602AC5D2A09A8E6003D2CD7 /* AppModel.swift */; };
 		460366772A02BCBA00767788 /* ShareSheetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 460366762A02BCBA00767788 /* ShareSheetView.swift */; };
 		4606162A2A0DABB4007F43FC /* AppModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4602AC5D2A09A8E6003D2CD7 /* AppModel.swift */; };
+		460E3A342A0EDC6100436AF1 /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 460E3A332A0EDC6100436AF1 /* CoreDataStack.swift */; };
+		460E3A352A0EDC6100436AF1 /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 460E3A332A0EDC6100436AF1 /* CoreDataStack.swift */; };
 		465882DC29F8D4C600E2DF56 /* RootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 465882DB29F8D4C600E2DF56 /* RootView.swift */; };
 		465882DE29F8D57600E2DF56 /* LibraryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 465882DD29F8D57600E2DF56 /* LibraryView.swift */; };
 		465882E029F8D5BA00E2DF56 /* AppsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 465882DF29F8D5BA00E2DF56 /* AppsView.swift */; };
@@ -64,6 +66,7 @@
 /* Begin PBXFileReference section */
 		4602AC5D2A09A8E6003D2CD7 /* AppModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppModel.swift; sourceTree = "<group>"; };
 		460366762A02BCBA00767788 /* ShareSheetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareSheetView.swift; sourceTree = "<group>"; };
+		460E3A332A0EDC6100436AF1 /* CoreDataStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataStack.swift; sourceTree = "<group>"; };
 		465882DB29F8D4C600E2DF56 /* RootView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootView.swift; sourceTree = "<group>"; };
 		465882DD29F8D57600E2DF56 /* LibraryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibraryView.swift; sourceTree = "<group>"; };
 		465882DF29F8D5BA00E2DF56 /* AppsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppsView.swift; sourceTree = "<group>"; };
@@ -155,6 +158,7 @@
 				46DE82EF29F5B28800A7869A /* Networking */,
 				46DE82E829F5AFCA00A7869A /* ViewModels */,
 				46DE82E529F5AEDC00A7869A /* Views */,
+				460E3A332A0EDC6100436AF1 /* CoreDataStack.swift */,
 			);
 			path = tempo;
 			sourceTree = "<group>";
@@ -311,6 +315,7 @@
 				46AF379E29FF03670076982E /* LookupResult.swift in Sources */,
 				46AF37A429FF18470076982E /* AppStoreAPI.swift in Sources */,
 				460366772A02BCBA00767788 /* ShareSheetView.swift in Sources */,
+				460E3A352A0EDC6100436AF1 /* CoreDataStack.swift in Sources */,
 				46EEFC712A06900900839BA9 /* AddingAppView.swift in Sources */,
 				46EED9ED2A06E2C100899175 /* tempo.xcdatamodeld in Sources */,
 				46A5D85729E7C29F00C541CE /* CoreData.swift in Sources */,
@@ -322,6 +327,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				460E3A342A0EDC6100436AF1 /* CoreDataStack.swift in Sources */,
 				46BD14DD29E2767900C3BBE4 /* tempoApp.swift in Sources */,
 				46BD14DF29E2767900C3BBE4 /* Persistence.swift in Sources */,
 				46DE82EC29F5AFF900A7869A /* AppInfoView.swift in Sources */,
