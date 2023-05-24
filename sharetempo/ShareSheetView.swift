@@ -18,6 +18,11 @@ enum ViewState {
 
 
 struct ShareSheetView: View {
+//    @Environment(\.managedObjectContext) private var viewContext
+//    @StateObject var persistenceManager = PersistenceManager()
+    let shared = PersistenceManager.shared
+    
+    
     // Enumeration des différents états
     enum MyStates {
         case idle
@@ -50,15 +55,46 @@ struct ShareSheetView: View {
                 }
             }
         }.onAppear {
+            // onAppear triggers actions any time the view appears on screen, even if it’s not the first time.
+//            self.viewState = .loading
+//            self.loadMaxData()
+        }.task {
+            // task triggers actions that execute asynchronously before the view appears on screen.
             self.viewState = .loading
             self.loadMaxData()
+        }.onDisappear {
+            // onDisappear triggers actions when a view disappears from screen.
         }
         
         Button {
+            print("btn clicked")
+            
             self.state = .loading
             
-            localSaveApp()
+            shared.addToDoItem(description: currentApp.trackName ?? "no app name found")
+            
+//            localSaveApp()
 //            self.context?.completeRequest(returningItems: nil, completionHandler: nil)
+            
+//            guard let myEntity = NSEntityDescription.entity(forEntityName: "tempo", in: self.viewContext) else {
+//                fatalError("Impossible de récupérer l'entité MyEntity")
+//            }
+            
+//            print("myEntity valid")
+            
+//            let instance = AppModelItem(entity: myEntity, insertInto: self.viewContext)
+            
+//            instance.timestamp = Date()
+//            instance.id = self.currentApp.id
+//            instance.trackName = self.currentApp.trackName
+            
+//            do {
+//                try self.viewContext.save()
+//                print("SAVED ?")
+//            } catch let error as NSError {
+//                print("Erreur lors de l'enregistrement de l'instance dans Core Data : \(error.localizedDescription)")
+//            }
+            
             
             self.state = .viewWillClose
         } label: {
@@ -73,31 +109,31 @@ struct ShareSheetView: View {
     
     private func localSaveApp() {
         // Créer une instance du CoreDataStack
-        let coreDataStack = CoreDataStack()
+//        let coreDataStack = CoreDataStack()
         
         // Créer une instance de votre NSManagedObject
-        guard let entity = NSEntityDescription.entity(forEntityName: "AppModelItem", in: coreDataStack.viewContext) else {
-            fatalError("Impossible de récupérer l'entité MyEntity")
-//            print("Impossible de récupérer l'entité MyEntity")
-        }
+//        guard let myEntity = NSEntityDescription.entity(forEntityName: "AppModelItem", in: self.viewContext) else {
+//            fatalError("Impossible de récupérer l'entité MyEntity")
+////            print("Impossible de récupérer l'entité MyEntity")
+//        }
 
-        let instance = AppModelItem(entity: entity, insertInto: coreDataStack.viewContext)
-
-        instance.timestamp = Date()
-        instance.id = self.currentApp.id
-        instance.trackName = self.currentApp.trackName
+//        let instance = AppModelItem(entity: myEntity, insertInto: self.viewContext)
+//
+//        instance.timestamp = Date()
+//        instance.id = self.currentApp.id
+//        instance.trackName = self.currentApp.trackName
         // ... le faire pour tout
 
         // Enregistrez les changements dans Core Data
 //        coreDataStack.saveContext()
         
-        do {
-            try coreDataStack.viewContext.save()
-            print("SAVED ?")
-        } catch let error as NSError {
-//                fatalError("Unresolved error \(error), \(error.userInfo)")
-            print("Erreur lors de l'enregistrement de l'instance dans Core Data : \(error.localizedDescription)")
-        }
+//        do {
+//            try self.viewContext.save()
+//            print("SAVED ?")
+//        } catch let error as NSError {
+////                fatalError("Unresolved error \(error), \(error.userInfo)")
+//            print("Erreur lors de l'enregistrement de l'instance dans Core Data : \(error.localizedDescription)")
+//        }
     }
     
     private func buttonContent() -> some View {

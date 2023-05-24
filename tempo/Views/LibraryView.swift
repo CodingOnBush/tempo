@@ -10,11 +10,11 @@ import CoreData
 
 struct LibraryView: View {
     // Injectez l'instance du CoreDataStack
-    @Environment(\.managedObjectContext) private var viewContext
+//    @Environment(\.managedObjectContext) private var viewContext
     
     // Créez une requête pour récupérer toutes les instances d'AppModelItem
-    @FetchRequest(sortDescriptors: [])
-    private var items: FetchedResults<AppModelItem>
+//    @FetchRequest(sortDescriptors: [])
+//    private var items: FetchedResults<AppModelItem>
     
     
     
@@ -22,9 +22,9 @@ struct LibraryView: View {
         NavigationView {
             List {
                 // Affichez chaque instance dans la liste
-                ForEach(items) { item in
-                    Text(item.trackName ?? "Untitled")
-                }
+//                ForEach(items) { item in
+//                    Text(item.trackName ?? "Untitled")
+//                }
             }
             .navigationTitle("My Data")
         }

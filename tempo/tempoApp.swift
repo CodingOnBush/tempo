@@ -9,12 +9,13 @@ import SwiftUI
 
 @main
 struct tempoApp: App {
-    let persistenceController = PersistenceController.shared
-
+    @StateObject var persistenceManager = PersistenceManager()
+    
     var body: some Scene {
         WindowGroup {
-            ContentView()
-                .environment(\.managedObjectContext, persistenceController.container.viewContext)
+//            ContentView()
+            ToDoView()
+                .environmentObject(persistenceManager)
         }
     }
 }
