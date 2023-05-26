@@ -10,7 +10,7 @@ import CoreData
 
 struct AddingAppView: View {
 //    @Environment(\.dismiss) var dismiss
-    @EnvironmentObject var persistenceManager: PersistenceManager
+//    @EnvironmentObject var persistenceManager: PersistenceManager
     @State var itemDescription: String = ""
     
     @StateObject var app: AppModel

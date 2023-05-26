@@ -10,16 +10,15 @@
 		4602AC5E2A09A8E6003D2CD7 /* AppModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4602AC5D2A09A8E6003D2CD7 /* AppModel.swift */; };
 		460366772A02BCBA00767788 /* ShareSheetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 460366762A02BCBA00767788 /* ShareSheetView.swift */; };
 		4606162A2A0DABB4007F43FC /* AppModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4602AC5D2A09A8E6003D2CD7 /* AppModel.swift */; };
+		464C158C2A21046F004DD087 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 464C158B2A21046F004DD087 /* MainView.swift */; };
+		464C15962A211CE8004DD087 /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 464C15942A211CE8004DD087 /* Model.xcdatamodeld */; };
+		464C15972A211CE8004DD087 /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 464C15942A211CE8004DD087 /* Model.xcdatamodeld */; };
+		464C15992A211D1A004DD087 /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 464C15982A211D1A004DD087 /* Persistence.swift */; };
+		464C159A2A211D1A004DD087 /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 464C15982A211D1A004DD087 /* Persistence.swift */; };
 		465882DC29F8D4C600E2DF56 /* RootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 465882DB29F8D4C600E2DF56 /* RootView.swift */; };
 		465882DE29F8D57600E2DF56 /* LibraryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 465882DD29F8D57600E2DF56 /* LibraryView.swift */; };
 		465882E029F8D5BA00E2DF56 /* AppsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 465882DF29F8D5BA00E2DF56 /* AppsView.swift */; };
-		465CD4B22A1E469800EE26FE /* PersistenceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 465CD4B12A1E469800EE26FE /* PersistenceManager.swift */; };
-		465CD4B52A1E46C700EE26FE /* TempoData.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 465CD4B32A1E46C700EE26FE /* TempoData.xcdatamodeld */; };
-		465CD4B62A1E46CB00EE26FE /* TempoData.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 465CD4B32A1E46C700EE26FE /* TempoData.xcdatamodeld */; };
-		465CD4B72A1E46CD00EE26FE /* PersistenceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 465CD4B12A1E469800EE26FE /* PersistenceManager.swift */; };
 		465CD4B92A1E47CE00EE26FE /* ToDoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 465CD4B82A1E47CE00EE26FE /* ToDoView.swift */; };
-		465CD4BB2A1E47E700EE26FE /* ToDoRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 465CD4BA2A1E47E700EE26FE /* ToDoRow.swift */; };
-		465CD4BC2A1E48A800EE26FE /* AddingAppView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46EEFC702A06900900839BA9 /* AddingAppView.swift */; };
 		46AB95C129E2E5670003A3F4 /* ShareViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46AB95C029E2E5670003A3F4 /* ShareViewController.swift */; };
 		46AB95C829E2E5670003A3F4 /* sharetempo.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 46AB95BE29E2E5670003A3F4 /* sharetempo.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		46AF379E29FF03670076982E /* LookupResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46DE82E029F5AC9F00A7869A /* LookupResult.swift */; };
@@ -29,7 +28,6 @@
 		46BD14DD29E2767900C3BBE4 /* tempoApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46BD14DC29E2767900C3BBE4 /* tempoApp.swift */; };
 		46BD14E429E2767900C3BBE4 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46BD14E329E2767900C3BBE4 /* ContentView.swift */; };
 		46BD14E629E2767900C3BBE4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 46BD14E529E2767900C3BBE4 /* Assets.xcassets */; };
-		46BD14EA29E2767900C3BBE4 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 46BD14E929E2767900C3BBE4 /* Preview Assets.xcassets */; };
 		46DD0C1829E51A2F00DBC94C /* ShareNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46DD0C1729E51A2F00DBC94C /* ShareNavigationController.swift */; };
 		46DE82E129F5AC9F00A7869A /* LookupResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46DE82E029F5AC9F00A7869A /* LookupResult.swift */; };
 		46DE82EA29F5AFD800A7869A /* AppInfoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46DE82E929F5AFD800A7869A /* AppInfoViewModel.swift */; };
@@ -66,13 +64,13 @@
 /* Begin PBXFileReference section */
 		4602AC5D2A09A8E6003D2CD7 /* AppModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppModel.swift; sourceTree = "<group>"; };
 		460366762A02BCBA00767788 /* ShareSheetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareSheetView.swift; sourceTree = "<group>"; };
+		464C158B2A21046F004DD087 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
+		464C15952A211CE8004DD087 /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
+		464C15982A211D1A004DD087 /* Persistence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Persistence.swift; sourceTree = "<group>"; };
 		465882DB29F8D4C600E2DF56 /* RootView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootView.swift; sourceTree = "<group>"; };
 		465882DD29F8D57600E2DF56 /* LibraryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibraryView.swift; sourceTree = "<group>"; };
 		465882DF29F8D5BA00E2DF56 /* AppsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppsView.swift; sourceTree = "<group>"; };
-		465CD4B12A1E469800EE26FE /* PersistenceManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistenceManager.swift; sourceTree = "<group>"; };
-		465CD4B42A1E46C700EE26FE /* TempoData.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = TempoData.xcdatamodel; sourceTree = "<group>"; };
 		465CD4B82A1E47CE00EE26FE /* ToDoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoView.swift; sourceTree = "<group>"; };
-		465CD4BA2A1E47E700EE26FE /* ToDoRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoRow.swift; sourceTree = "<group>"; };
 		46AB95BE29E2E5670003A3F4 /* sharetempo.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = sharetempo.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		46AB95C029E2E5670003A3F4 /* ShareViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareViewController.swift; sourceTree = "<group>"; };
 		46AB95C529E2E5670003A3F4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -82,7 +80,6 @@
 		46BD14E329E2767900C3BBE4 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		46BD14E529E2767900C3BBE4 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		46BD14E729E2767900C3BBE4 /* tempo.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = tempo.entitlements; sourceTree = "<group>"; };
-		46BD14E929E2767900C3BBE4 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		46DD0C1729E51A2F00DBC94C /* ShareNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareNavigationController.swift; sourceTree = "<group>"; };
 		46DD0C1929E5407300DBC94C /* sharetempo.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = sharetempo.entitlements; sourceTree = "<group>"; };
 		46DE82E029F5AC9F00A7869A /* LookupResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LookupResult.swift; sourceTree = "<group>"; };
@@ -111,11 +108,11 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		465CD4B02A1E468600EE26FE /* CoreData */ = {
+		464C15932A211CDA004DD087 /* CoreData */ = {
 			isa = PBXGroup;
 			children = (
-				465CD4B12A1E469800EE26FE /* PersistenceManager.swift */,
-				465CD4B32A1E46C700EE26FE /* TempoData.xcdatamodeld */,
+				464C15942A211CE8004DD087 /* Model.xcdatamodeld */,
+				464C15982A211D1A004DD087 /* Persistence.swift */,
 			);
 			path = CoreData;
 			sourceTree = "<group>";
@@ -124,9 +121,9 @@
 			isa = PBXGroup;
 			children = (
 				46DD0C1929E5407300DBC94C /* sharetempo.entitlements */,
+				46EEFC6E2A068FA500839BA9 /* WrongURLView.swift */,
 				46AB95C029E2E5670003A3F4 /* ShareViewController.swift */,
 				46AB95C529E2E5670003A3F4 /* Info.plist */,
-				46EEFC6E2A068FA500839BA9 /* WrongURLView.swift */,
 				46DD0C1729E51A2F00DBC94C /* ShareNavigationController.swift */,
 				460366762A02BCBA00767788 /* ShareSheetView.swift */,
 				46EEFC702A06900900839BA9 /* AddingAppView.swift */,
@@ -155,26 +152,17 @@
 		46BD14DB29E2767900C3BBE4 /* tempo */ = {
 			isa = PBXGroup;
 			children = (
-				465CD4B02A1E468600EE26FE /* CoreData */,
+				464C15932A211CDA004DD087 /* CoreData */,
+				46DE82EF29F5B28800A7869A /* Networking */,
 				46BD14DC29E2767900C3BBE4 /* tempoApp.swift */,
-				46BD14E829E2767900C3BBE4 /* Preview Content */,
 				46BD14E329E2767900C3BBE4 /* ContentView.swift */,
 				46BD14E529E2767900C3BBE4 /* Assets.xcassets */,
 				46BD14E729E2767900C3BBE4 /* tempo.entitlements */,
 				46DE82E229F5AEB300A7869A /* Models */,
-				46DE82EF29F5B28800A7869A /* Networking */,
-				46DE82E829F5AFCA00A7869A /* ViewModels */,
 				46DE82E529F5AEDC00A7869A /* Views */,
+				46DE82E829F5AFCA00A7869A /* ViewModels */,
 			);
 			path = tempo;
-			sourceTree = "<group>";
-		};
-		46BD14E829E2767900C3BBE4 /* Preview Content */ = {
-			isa = PBXGroup;
-			children = (
-				46BD14E929E2767900C3BBE4 /* Preview Assets.xcassets */,
-			);
-			path = "Preview Content";
 			sourceTree = "<group>";
 		};
 		46DE82E229F5AEB300A7869A /* Models */ = {
@@ -195,7 +183,7 @@
 				465882DD29F8D57600E2DF56 /* LibraryView.swift */,
 				465882DF29F8D5BA00E2DF56 /* AppsView.swift */,
 				465CD4B82A1E47CE00EE26FE /* ToDoView.swift */,
-				465CD4BA2A1E47E700EE26FE /* ToDoRow.swift */,
+				464C158B2A21046F004DD087 /* MainView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -305,7 +293,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				46BD14EA29E2767900C3BBE4 /* Preview Assets.xcassets in Resources */,
 				46BD14E629E2767900C3BBE4 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -318,15 +305,15 @@
 			buildActionMask = 2147483647;
 			files = (
 				46EEFC6F2A068FA500839BA9 /* WrongURLView.swift in Sources */,
-				465CD4B72A1E46CD00EE26FE /* PersistenceManager.swift in Sources */,
 				46AB95C129E2E5670003A3F4 /* ShareViewController.swift in Sources */,
 				4606162A2A0DABB4007F43FC /* AppModel.swift in Sources */,
 				46AF379E29FF03670076982E /* LookupResult.swift in Sources */,
 				46AF37A429FF18470076982E /* AppStoreAPI.swift in Sources */,
+				464C15972A211CE8004DD087 /* Model.xcdatamodeld in Sources */,
 				460366772A02BCBA00767788 /* ShareSheetView.swift in Sources */,
 				46EEFC712A06900900839BA9 /* AddingAppView.swift in Sources */,
-				465CD4B62A1E46CB00EE26FE /* TempoData.xcdatamodeld in Sources */,
 				46DD0C1829E51A2F00DBC94C /* ShareNavigationController.swift in Sources */,
+				464C159A2A211D1A004DD087 /* Persistence.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -335,19 +322,18 @@
 			buildActionMask = 2147483647;
 			files = (
 				46BD14DD29E2767900C3BBE4 /* tempoApp.swift in Sources */,
-				465CD4BC2A1E48A800EE26FE /* AddingAppView.swift in Sources */,
 				46DE82EC29F5AFF900A7869A /* AppInfoView.swift in Sources */,
 				4602AC5E2A09A8E6003D2CD7 /* AppModel.swift in Sources */,
-				465CD4B22A1E469800EE26FE /* PersistenceManager.swift in Sources */,
+				464C15962A211CE8004DD087 /* Model.xcdatamodeld in Sources */,
 				465CD4B92A1E47CE00EE26FE /* ToDoView.swift in Sources */,
 				46BCA5CB29F8421400D07989 /* HomeView.swift in Sources */,
 				465882DE29F8D57600E2DF56 /* LibraryView.swift in Sources */,
 				46DE82EE29F5B11800A7869A /* AppStoreAPI.swift in Sources */,
 				46BD14E429E2767900C3BBE4 /* ContentView.swift in Sources */,
+				464C15992A211D1A004DD087 /* Persistence.swift in Sources */,
 				46DE82EA29F5AFD800A7869A /* AppInfoViewModel.swift in Sources */,
 				46DE82E129F5AC9F00A7869A /* LookupResult.swift in Sources */,
-				465CD4B52A1E46C700EE26FE /* TempoData.xcdatamodeld in Sources */,
-				465CD4BB2A1E47E700EE26FE /* ToDoRow.swift in Sources */,
+				464C158C2A21046F004DD087 /* MainView.swift in Sources */,
 				465882DC29F8D4C600E2DF56 /* RootView.swift in Sources */,
 				465882E029F8D5BA00E2DF56 /* AppsView.swift in Sources */,
 			);
@@ -541,7 +527,6 @@
 				CODE_SIGN_ENTITLEMENTS = tempo/tempo.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"tempo/Preview Content\"";
 				DEVELOPMENT_TEAM = 2PT2WK79D9;
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
@@ -582,7 +567,6 @@
 				CODE_SIGN_ENTITLEMENTS = tempo/tempo.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"tempo/Preview Content\"";
 				DEVELOPMENT_TEAM = 2PT2WK79D9;
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
@@ -647,13 +631,13 @@
 /* End XCConfigurationList section */
 
 /* Begin XCVersionGroup section */
-		465CD4B32A1E46C700EE26FE /* TempoData.xcdatamodeld */ = {
+		464C15942A211CE8004DD087 /* Model.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
-				465CD4B42A1E46C700EE26FE /* TempoData.xcdatamodel */,
+				464C15952A211CE8004DD087 /* Model.xcdatamodel */,
 			);
-			currentVersion = 465CD4B42A1E46C700EE26FE /* TempoData.xcdatamodel */;
-			path = TempoData.xcdatamodeld;
+			currentVersion = 464C15952A211CE8004DD087 /* Model.xcdatamodel */;
+			path = Model.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;
 		};

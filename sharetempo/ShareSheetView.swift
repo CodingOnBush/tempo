@@ -18,18 +18,12 @@ enum ViewState {
 
 
 struct ShareSheetView: View {
+//    let persistenceController = PersistenceController.shared
+//    var coreDataViewContext = PersistenceController.shared.container.viewContext
+    
 //    @Environment(\.managedObjectContext) private var viewContext
 //    @StateObject var persistenceManager = PersistenceManager()
-    let shared = PersistenceManager.shared
-    
-    
-    // Enumeration des différents états
-    enum MyStates {
-        case idle
-        case loading
-        case viewWillClose
-        case error
-    }
+//    let shared = PersistenceManager.shared
     
     // Etat initial est "idle"
     @State var state: MyStates = .idle
@@ -38,6 +32,18 @@ struct ShareSheetView: View {
     var currentApp = AppModel()
     @State var isValidURL: Bool = false
     @State var viewState: ViewState = .idle
+    
+//    var myCoreData = CoreData.shared
+    
+    
+    // Enumeration des différents états
+    enum MyStates {
+        case idle
+        case loading
+        case viewWillClose
+        case dataSaved
+        case error
+    }
     
     
     var body: some View {
@@ -71,7 +77,28 @@ struct ShareSheetView: View {
             
             self.state = .loading
             
-            shared.addToDoItem(description: currentApp.trackName ?? "no app name found")
+//            let newToDo = ToDoItem(context: myCoreData.persistentContainer.viewContext)
+//            newToDo.isCompleted = false
+//            newToDo.taskDescription = self.currentApp.trackName ?? "no app name found"
+//
+//            myCoreData.saveContext()
+            self.state = .dataSaved
+            
+//            do {
+//                try myCoreData.saveContext()
+//                self.state = .dataSaved
+//            } catch {
+//                print("error viewContext.save()")
+//            }
+            
+//            if let safeURL = self.currentApp.appstoreURL {
+//
+//                self.state = .dataSaved
+//            }
+            
+            
+            
+//            shared.addToDoItem(description: currentApp.trackName ?? "no app name found")
             
 //            localSaveApp()
 //            self.context?.completeRequest(returningItems: nil, completionHandler: nil)
@@ -96,7 +123,7 @@ struct ShareSheetView: View {
 //            }
             
             
-            self.state = .viewWillClose
+            
         } label: {
             buttonContent()
                 .foregroundColor(.white)
@@ -140,6 +167,8 @@ struct ShareSheetView: View {
         switch self.state {
         case .idle:
             return AnyView(Text("Start Loading"))
+        case .dataSaved:
+            return AnyView(Text("Data saved !"))
         case .loading:
             return AnyView(ProgressView())
         case .error:

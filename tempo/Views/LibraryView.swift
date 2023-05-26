@@ -6,7 +6,6 @@
 //
 
 import SwiftUI
-import CoreData
 
 struct LibraryView: View {
     // Injectez l'instance du CoreDataStack
