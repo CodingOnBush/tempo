@@ -1,22 +1,20 @@
 //
-//  ContentView.swift
+//  ContentView2.swift
 //  tempo
 //
-//  Created by VegaPunk on 09/04/2023.
+//  Created by VegaPunk on 26/05/2023.
 //
 
 import SwiftUI
 import CoreData
 
-struct ContentView: View {
+struct ContentView2: View {
     @Environment(\.managedObjectContext) private var viewContext
 
     @FetchRequest(
         sortDescriptors: [NSSortDescriptor(keyPath: \AppEntity.timestamp, ascending: true)],
         animation: .default)
     private var items: FetchedResults<AppEntity>
-    
-    @Environment(\.scenePhase) var scenePhase
 
     var body: some View {
         NavigationView {
@@ -41,16 +39,6 @@ struct ContentView: View {
                 }
             }
             Text("Select an item")
-        }
-        .onChange(of: scenePhase) { newPhase in
-            if newPhase == .active {
-                print("Active")
-                // reload la data a afficher
-            } else if newPhase == .inactive {
-                print("Inactive")
-            } else if newPhase == .background {
-                print("Background")
-            }
         }
     }
 
@@ -93,8 +81,8 @@ private let itemFormatter: DateFormatter = {
     return formatter
 }()
 
-struct ContentView_Previews: PreviewProvider {
+struct ContentView2_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView().environment(\.managedObjectContext, PersistenceController.preview.container.viewContext)
+        ContentView2().environment(\.managedObjectContext, PersistenceController.preview.container.viewContext)
     }
 }

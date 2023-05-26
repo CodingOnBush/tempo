@@ -55,7 +55,8 @@ struct ShareSheetView: View {
                 case .idle, .loading:
                     ProgressView()
                 case .loaded:
-                    AddingAppView(app: currentApp)
+//                    AddingAppView(app: currentApp)
+                    ContentView2().environment(\.managedObjectContext, PersistenceController.shared.container.viewContext)
                 default:
                     ProgressView()
                 }

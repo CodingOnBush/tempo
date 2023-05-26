@@ -32,6 +32,11 @@ struct PersistenceController {
     
     init(inMemory: Bool = false) {
         container = NSPersistentContainer(name: "Model")
+        
+        let url = URL.storeURL(for: "group.com.vegapunk.tempo", databaseName: "Model")
+        let storeDescription = NSPersistentStoreDescription(url: url)
+        container.persistentStoreDescriptions = [storeDescription]
+        
         if inMemory {
             container.persistentStoreDescriptions.first!.url = URL(fileURLWithPath: "/dev/null")
         }
@@ -41,5 +46,15 @@ struct PersistenceController {
             }
         })
         container.viewContext.automaticallyMergesChangesFromParent = true
+    }
+}
+
+public extension URL {
+    static func storeURL(for appGroup: String, databaseName: String) -> URL {
+        guard let fileContainer = FileManager.default.containerURL(forSecurityApplicationGroupIdentifier: appGroup) else {
+            fatalError("Unable to create URL for \(appGroup)")
+        }
+        
+        return fileContainer.appendingPathComponent("\(databaseName).sqlite")
     }
 }
