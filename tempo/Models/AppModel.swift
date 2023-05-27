@@ -27,6 +27,7 @@ public class AppModel: ObservableObject, Identifiable {
     @Published var currentVersionReleaseDate: String?
     
     @Published var appIcon: Image?
+    @Published var appIconUIImage: UIImage?
     @Published var appstoreURL: URL?
     @Published var isValidURL: Bool?
     @Published var artworkURLString: String?

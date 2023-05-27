@@ -77,6 +77,7 @@ struct ShareSheetView: View {
         let newItem = AppEntity(context: viewContext)
         newItem.timestamp = Date()
         newItem.appName = self.currentApp.trackName
+        newItem.icon = self.currentApp.appIconUIImage!.pngData()
 
         do {
             try viewContext.save()
@@ -97,6 +98,7 @@ struct ShareSheetView: View {
                 }
                 
                 DispatchQueue.main.async {
+                    self.currentApp.appIconUIImage = UIImage(data: data)
                     self.currentApp.appIcon = Image(uiImage: UIImage(data: data)!)
                 }
             }.resume()
