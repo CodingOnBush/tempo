@@ -12,6 +12,8 @@ class ShareViewController: UIViewController {
         super.viewDidLoad()
         
         let swiftUIView = ShareSheetView(context: self.extensionContext)
+            .environment(\.managedObjectContext, PersistenceController.shared.container.viewContext)
+        
         let hostingController = UIHostingController(rootView: swiftUIView)
         
         addChild(hostingController)

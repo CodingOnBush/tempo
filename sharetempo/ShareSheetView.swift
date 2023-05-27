@@ -5,181 +5,91 @@
 //  Created by VegaPunk on 03/05/2023.
 //
 
-import Foundation
 import SwiftUI
 import CoreData
 
-enum ViewState {
-    case idle
-    case loading
-    case loaded
-    case noURL
-}
-
-
 struct ShareSheetView: View {
-//    let persistenceController = PersistenceController.shared
-//    var coreDataViewContext = PersistenceController.shared.container.viewContext
-    
-//    @Environment(\.managedObjectContext) private var viewContext
-//    @StateObject var persistenceManager = PersistenceManager()
-//    let shared = PersistenceManager.shared
-    
-    // Etat initial est "idle"
-    @State var state: MyStates = .idle
-    
+    @Environment(\.managedObjectContext) private var viewContext
     var context: NSExtensionContext?
-    var currentApp = AppModel()
+    @StateObject var currentApp = AppModel()
     @State var isValidURL: Bool = false
-    @State var viewState: ViewState = .idle
-    
-//    var myCoreData = CoreData.shared
-    
-    
-    // Enumeration des différents états
-    enum MyStates {
-        case idle
-        case loading
-        case viewWillClose
-        case dataSaved
-        case error
-    }
-    
+    @State var isItemSaved = "nooo"
     
     var body: some View {
-        VStack {
-            if self.isValidURL == false {
-                WrongURLView()
-            } else {
-                switch self.viewState {
-                case .idle, .loading:
-                    ProgressView()
-                case .loaded:
-//                    AddingAppView(app: currentApp)
-                    ContentView2().environment(\.managedObjectContext, PersistenceController.shared.container.viewContext)
-                default:
-                    ProgressView()
+        ZStack {
+            Color.gray.ignoresSafeArea()
+            VStack {
+                ZStack {
+                    Color(red: 0.89, green: 0.89, blue: 0.89)
+                        .ignoresSafeArea()
+                    VStack {
+                        Text("is item saved ? \(isItemSaved)")
+                        HStack {
+                            ZStack {
+                                Rectangle().foregroundColor(.gray)
+                                self.currentApp.appIcon?.resizable()
+                            }
+                            .frame(width: 100, height: 100)
+                            .cornerRadius(16)
+                            .shadow(radius: 5)
+
+                            VStack(alignment: .leading, spacing: 5) {
+                                Text(self.currentApp.trackName ?? "app name")
+                                    .font(.headline)
+                                Text("\(self.currentApp.trackId ?? 0)")
+                                    .font(.subheadline)
+                            }
+                            .padding(.leading, 16)
+                        }
+                        .padding(18)
+                        .background(Color.white)
+                        .cornerRadius(8)
+                    }
+                }
+                
+                Spacer()
+                
+                Button(action: addItem) {
+                    ZStack {
+                        Color.black
+                        Label("Add Item", systemImage: "plus.square")
+                            .bold()
+                            .foregroundColor(.white)
+                    }
+                    .frame(width: 130, height: 46)
+                    .cornerRadius(8)
                 }
             }
+            .padding()
         }.onAppear {
             // onAppear triggers actions any time the view appears on screen, even if it’s not the first time.
-//            self.viewState = .loading
-//            self.loadMaxData()
+            self.loadMaxData()
         }.task {
             // task triggers actions that execute asynchronously before the view appears on screen.
-            self.viewState = .loading
-            self.loadMaxData()
+            // self.loadMaxData()
         }.onDisappear {
             // onDisappear triggers actions when a view disappears from screen.
         }
         
-        Button {
-            print("btn clicked")
-            
-            self.state = .loading
-            
-//            let newToDo = ToDoItem(context: myCoreData.persistentContainer.viewContext)
-//            newToDo.isCompleted = false
-//            newToDo.taskDescription = self.currentApp.trackName ?? "no app name found"
-//
-//            myCoreData.saveContext()
-            self.state = .dataSaved
-            
-//            do {
-//                try myCoreData.saveContext()
-//                self.state = .dataSaved
-//            } catch {
-//                print("error viewContext.save()")
-//            }
-            
-//            if let safeURL = self.currentApp.appstoreURL {
-//
-//                self.state = .dataSaved
-//            }
-            
-            
-            
-//            shared.addToDoItem(description: currentApp.trackName ?? "no app name found")
-            
-//            localSaveApp()
-//            self.context?.completeRequest(returningItems: nil, completionHandler: nil)
-            
-//            guard let myEntity = NSEntityDescription.entity(forEntityName: "tempo", in: self.viewContext) else {
-//                fatalError("Impossible de récupérer l'entité MyEntity")
-//            }
-            
-//            print("myEntity valid")
-            
-//            let instance = AppModelItem(entity: myEntity, insertInto: self.viewContext)
-            
-//            instance.timestamp = Date()
-//            instance.id = self.currentApp.id
-//            instance.trackName = self.currentApp.trackName
-            
-//            do {
-//                try self.viewContext.save()
-//                print("SAVED ?")
-//            } catch let error as NSError {
-//                print("Erreur lors de l'enregistrement de l'instance dans Core Data : \(error.localizedDescription)")
-//            }
-            
-            
-            
-        } label: {
-            buttonContent()
-                .foregroundColor(.white)
-                .padding()
-                .background(.purple)
-                .cornerRadius(8)
-        }
-        
     }
     
-    private func localSaveApp() {
-        // Créer une instance du CoreDataStack
-//        let coreDataStack = CoreDataStack()
-        
-        // Créer une instance de votre NSManagedObject
-//        guard let myEntity = NSEntityDescription.entity(forEntityName: "AppModelItem", in: self.viewContext) else {
-//            fatalError("Impossible de récupérer l'entité MyEntity")
-////            print("Impossible de récupérer l'entité MyEntity")
-//        }
+    private func addItem() {
+        let newItem = AppEntity(context: viewContext)
+        newItem.timestamp = Date()
+        newItem.appName = self.currentApp.trackName
 
-//        let instance = AppModelItem(entity: myEntity, insertInto: self.viewContext)
-//
-//        instance.timestamp = Date()
-//        instance.id = self.currentApp.id
-//        instance.trackName = self.currentApp.trackName
-        // ... le faire pour tout
-
-        // Enregistrez les changements dans Core Data
-//        coreDataStack.saveContext()
-        
-//        do {
-//            try self.viewContext.save()
-//            print("SAVED ?")
-//        } catch let error as NSError {
-////                fatalError("Unresolved error \(error), \(error.userInfo)")
-//            print("Erreur lors de l'enregistrement de l'instance dans Core Data : \(error.localizedDescription)")
-//        }
-    }
-    
-    private func buttonContent() -> some View {
-        switch self.state {
-        case .idle:
-            return AnyView(Text("Start Loading"))
-        case .dataSaved:
-            return AnyView(Text("Data saved !"))
-        case .loading:
-            return AnyView(ProgressView())
-        case .error:
-            return AnyView(Text("Error"))
-        case .viewWillClose:
-            return AnyView(Text("View closing"))
+        do {
+            try viewContext.save()
+            self.isItemSaved = "yesss"
+        } catch {
+            // Replace this implementation with code to handle the error appropriately.
+            // fatalError() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
+            let nsError = error as NSError
+            fatalError("Unresolved error \(nsError), \(nsError.userInfo)")
         }
     }
     
-    func loadImage(from url: URL?) {
+    private func loadImage(from url: URL?) {
         if let safeURL = url {
             URLSession.shared.dataTask(with: safeURL) { data, _, error in
                 guard let data = data, error == nil else {
@@ -221,8 +131,6 @@ struct ShareSheetView: View {
                             self.currentApp.currentVersionReleaseDate = appDetailsFetched?.currentVersionReleaseDate
                             
                             self.loadImage(from: self.currentApp.artworkUrl512)
-                            
-                            self.viewState = .loaded
                         } catch {
                             print(error.localizedDescription)
                         }
@@ -231,7 +139,6 @@ struct ShareSheetView: View {
             }
         }
     }
-    
     
     private func extractIdFromLink(_ link: String) -> String? {
         if let range = link.range(of: "id\\d+", options: .regularExpression) {

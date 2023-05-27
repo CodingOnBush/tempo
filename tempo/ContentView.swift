@@ -12,7 +12,7 @@ struct ContentView: View {
     @Environment(\.managedObjectContext) private var viewContext
 
     @FetchRequest(
-        sortDescriptors: [NSSortDescriptor(keyPath: \AppEntity.timestamp, ascending: true)],
+        sortDescriptors: [],
         animation: .default)
     private var items: FetchedResults<AppEntity>
     
@@ -23,9 +23,11 @@ struct ContentView: View {
             List {
                 ForEach(items) { item in
                     NavigationLink {
-                        Text("Item at \(item.timestamp!, formatter: itemFormatter)")
+//                        Text("\(item.appName ?? "no app name")")
+                         Text("Item at \(item.timestamp!, formatter: itemFormatter)")
                     } label: {
-                        Text(item.timestamp!, formatter: itemFormatter)
+//                        Text(item.timestamp!, formatter: itemFormatter)
+                        Text("\(item.appName ?? "no app name")")
                     }
                 }
                 .onDelete(perform: deleteItems)
