@@ -18,42 +18,15 @@ struct RootView: View {
     
     var body: some View {
         TabView(selection: $selectedTab) {
-            HomeView()
+            ContentView()
                 .tag("Home")
                 .tabItem {
-                    Image(systemName: "1.circle.fill")
-                    Text("Premier")
-                }
-            
-            LibraryView()
-                .tag("Library")
-                .tabItem {
-                    Label("Library", systemImage: "square.grid.2x2")
-                    Text("Premier")
-                }
-            
-            AppsView()
-                .tag("Settings")
-                .tabItem {
-                    Label("Settings", systemImage: "gearshape")
-                    Text("Settings")
+                    Image(systemName: "house")
+                    Text("Home")
                 }
         }
         .onAppear() {
             print("selected tab : \(selectedTab)")
-
-//            let standardAppearance = UITabBarAppearance()
-//            standardAppearance.backgroundColor = UIColor(Color.gray)
-//            standardAppearance.shadowColor = .gray
-
-//            let itemAppearance = UITabBarItemAppearance()
-//            itemAppearance.normal.iconColor = UIColor(Color.white)
-//            itemAppearance.selected.iconColor = UIColor(Color.red)
-//            standardAppearance.inlineLayoutAppearance = itemAppearance
-//            standardAppearance.stackedLayoutAppearance = itemAppearance
-//            standardAppearance.compactInlineLayoutAppearance = itemAppearance
-            
-//            UITabBar.appearance().standardAppearance = standardAppearance
         }
         .onChange(of: selectedTab) { newValue in
             print("selected tab : \(selectedTab)")

@@ -10,40 +10,27 @@ import CoreData
 
 struct ContentView: View {
     @Environment(\.managedObjectContext) private var viewContext
-    
-    @State var items: [AppEntity] = []
-    
-    
-    
+    @State var coredataItems: [AppEntity] = []
     @Environment(\.scenePhase) var scenePhase
     
     var body: some View {
         NavigationView {
             List {
-                ForEach(items) { item in
+                ForEach(coredataItems) { coredataItem in
                     NavigationLink {
-                        //                        Text("\(item.appName ?? "no app name")")
-                        // Text("Item at \(item.timestamp!, formatter: itemFormatter)")
-                        if let safeItemIcon = item.icon {
-                            if let safeUIImage = UIImage(data: safeItemIcon) {
+                        if let safeItemIcon = coredataItem.icon, let safeUIImage = UIImage(data: safeItemIcon) {
+                            VStack {
+                                Text("\(coredataItem.appName ?? "no app name")")
+                                Text("Item at \(coredataItem.timestamp!, formatter: itemFormatter)")
                                 Image(uiImage: safeUIImage)
-                                    .resizable()
-                                    .frame(width: 100, height: 100)
-                            } else {
-                                Text("fail safeUIImage")
+                                        .resizable()
+                                        .frame(width: 100, height: 100)
                             }
                         } else {
                             Text("fail safeItemIcon")
                         }
-                        
-                        //                        if let safeItemIcon = item.icon, let safeData = Data(base64Encoded: safeItemIcon), let safeUIImage = UIImage(data: safeData) {
-                        //                            Image(uiImage: safeUIImage)
-                        //                        } else {
-                        //                            Text("fail")
-                        //                        }
                     } label: {
-                        //                        Text(item.timestamp!, formatter: itemFormatter)
-                        Text("\(item.appName ?? "no app name")")
+                        Text("\(coredataItem.appName ?? "no app name")")
                     }
                 }
                 .onDelete(perform: deleteItems)
@@ -80,7 +67,7 @@ struct ContentView: View {
         
         do {
             // Récupérer les éléments à partir du contexte CoreData en utilisant la requête de récupération
-            items = try viewContext.fetch(fetchRequest)
+            coredataItems = try viewContext.fetch(fetchRequest)
         } catch {
             // Gérer les erreurs de récupération des données
             print("Erreur lors de la récupération des données : \(error.localizedDescription)")
@@ -106,7 +93,7 @@ struct ContentView: View {
     
     private func deleteItems(offsets: IndexSet) {
         withAnimation {
-            offsets.map { items[$0] }.forEach(viewContext.delete)
+            offsets.map { coredataItems[$0] }.forEach(viewContext.delete)
             
             do {
                 try viewContext.save()
@@ -129,6 +116,7 @@ private let itemFormatter: DateFormatter = {
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView().environment(\.managedObjectContext, PersistenceController.preview.container.viewContext)
+        ContentView()
+            .environment(\.managedObjectContext, PersistenceController.preview.container.viewContext)
     }
 }

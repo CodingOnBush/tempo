@@ -32,4 +32,54 @@ public class AppModel: ObservableObject, Identifiable {
     @Published var isValidURL: Bool?
     @Published var artworkURLString: String?
     
+    
+    init(trackName: String? = nil, description: String? = nil, version: String? = nil, sellerName: String? = nil, artworkUrl512: URL? = nil, trackId: Int? = nil, primaryGenreName: String? = nil, primaryGenreId: Int? = nil, averageUserRating: Double? = nil, userRatingCount: Int? = nil, price: Float? = nil, sellerUrl: String? = nil, screenshotUrls: [String]? = nil, releaseNotes: String? = nil, currentVersionReleaseDate: String? = nil, appIcon: Image? = nil, appIconUIImage: UIImage? = nil, appstoreURL: URL? = nil, isValidURL: Bool? = nil, artworkURLString: String? = nil) {
+        self.trackName = trackName
+        self.description = description
+        self.version = version
+        self.sellerName = sellerName
+        self.artworkUrl512 = artworkUrl512
+        self.trackId = trackId
+        self.primaryGenreName = primaryGenreName
+        self.primaryGenreId = primaryGenreId
+        self.averageUserRating = averageUserRating
+        self.userRatingCount = userRatingCount
+        self.price = price
+        self.sellerUrl = sellerUrl
+        self.screenshotUrls = screenshotUrls
+        self.releaseNotes = releaseNotes
+        self.currentVersionReleaseDate = currentVersionReleaseDate
+        self.appIcon = appIcon
+        self.appIconUIImage = appIconUIImage
+        self.appstoreURL = appstoreURL
+        self.isValidURL = isValidURL
+        self.artworkURLString = artworkURLString
+    }
+    
+    init(coredataItem: AppEntity) {
+        self.trackName = coredataItem.appName
+        self.description = ""
+        self.version = ""
+        self.sellerName = ""
+        self.artworkUrl512 = nil
+        self.trackId = 0
+        self.primaryGenreName = ""
+        self.primaryGenreId = 0
+        self.averageUserRating = 0
+        self.userRatingCount = 0
+        self.price = 0
+        self.sellerUrl = ""
+        self.screenshotUrls = nil
+        self.releaseNotes = ""
+        self.currentVersionReleaseDate = ""
+        
+        if let safeItemIcon = coredataItem.icon, let safeUIImage = UIImage(data: safeItemIcon) {
+            self.appIconUIImage = safeUIImage
+            self.appIcon = Image(uiImage: safeUIImage)
+        }
+        
+        self.appstoreURL = nil
+        self.isValidURL = true
+        self.artworkURLString = ""
+    }
 }
