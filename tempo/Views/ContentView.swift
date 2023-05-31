@@ -21,7 +21,6 @@ struct ContentView: View {
                         if let safeItemIcon = coredataItem.icon, let safeUIImage = UIImage(data: safeItemIcon) {
                             VStack {
                                 Text("\(coredataItem.appName ?? "no app name")")
-                                Text("Item at \(coredataItem.timestamp!, formatter: itemFormatter)")
                                 Image(uiImage: safeUIImage)
                                         .resizable()
                                         .frame(width: 100, height: 100)

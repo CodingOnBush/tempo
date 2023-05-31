@@ -9,8 +9,8 @@ import UIKit
 
 struct AnApp: Identifiable {
     let id = UUID()
-    let name: String
-    let icon: UIImage
+    var name: String
+    var icon: UIImage
 //    let appstoreURL: String
     
     init(name: String, icon: UIImage) {
