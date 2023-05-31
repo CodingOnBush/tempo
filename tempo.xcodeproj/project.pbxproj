@@ -12,8 +12,8 @@
 		4606162A2A0DABB4007F43FC /* AppModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4602AC5D2A09A8E6003D2CD7 /* AppModel.swift */; };
 		464C15962A211CE8004DD087 /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 464C15942A211CE8004DD087 /* Model.xcdatamodeld */; };
 		464C15972A211CE8004DD087 /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 464C15942A211CE8004DD087 /* Model.xcdatamodeld */; };
-		464C15992A211D1A004DD087 /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 464C15982A211D1A004DD087 /* Persistence.swift */; };
-		464C159A2A211D1A004DD087 /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 464C15982A211D1A004DD087 /* Persistence.swift */; };
+		464C15992A211D1A004DD087 /* PersistenceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 464C15982A211D1A004DD087 /* PersistenceController.swift */; };
+		464C159A2A211D1A004DD087 /* PersistenceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 464C15982A211D1A004DD087 /* PersistenceController.swift */; };
 		465882DC29F8D4C600E2DF56 /* RootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 465882DB29F8D4C600E2DF56 /* RootView.swift */; };
 		46AB95C829E2E5670003A3F4 /* sharetempo.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 46AB95BE29E2E5670003A3F4 /* sharetempo.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		46AF379E29FF03670076982E /* LookupResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46DE82E029F5AC9F00A7869A /* LookupResult.swift */; };
@@ -58,7 +58,7 @@
 		4602AC5D2A09A8E6003D2CD7 /* AppModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppModel.swift; sourceTree = "<group>"; };
 		460366762A02BCBA00767788 /* ShareSheetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareSheetView.swift; sourceTree = "<group>"; };
 		464C15952A211CE8004DD087 /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
-		464C15982A211D1A004DD087 /* Persistence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Persistence.swift; sourceTree = "<group>"; };
+		464C15982A211D1A004DD087 /* PersistenceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistenceController.swift; sourceTree = "<group>"; };
 		465882DB29F8D4C600E2DF56 /* RootView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootView.swift; sourceTree = "<group>"; };
 		46AB95BE29E2E5670003A3F4 /* sharetempo.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = sharetempo.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		46AB95C529E2E5670003A3F4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -98,7 +98,7 @@
 			isa = PBXGroup;
 			children = (
 				464C15942A211CE8004DD087 /* Model.xcdatamodeld */,
-				464C15982A211D1A004DD087 /* Persistence.swift */,
+				464C15982A211D1A004DD087 /* PersistenceController.swift */,
 			);
 			path = CoreData;
 			sourceTree = "<group>";
@@ -289,7 +289,7 @@
 				464C15972A211CE8004DD087 /* Model.xcdatamodeld in Sources */,
 				460366772A02BCBA00767788 /* ShareSheetView.swift in Sources */,
 				46DD0C1829E51A2F00DBC94C /* ShareNavigationController.swift in Sources */,
-				464C159A2A211D1A004DD087 /* Persistence.swift in Sources */,
+				464C159A2A211D1A004DD087 /* PersistenceController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -304,7 +304,7 @@
 				46F1AEB02A2747A700252F38 /* AnApp.swift in Sources */,
 				46DE82EE29F5B11800A7869A /* AppStoreAPI.swift in Sources */,
 				46BD14E429E2767900C3BBE4 /* ContentView.swift in Sources */,
-				464C15992A211D1A004DD087 /* Persistence.swift in Sources */,
+				464C15992A211D1A004DD087 /* PersistenceController.swift in Sources */,
 				46F1AEAC2A273E0600252F38 /* TestView.swift in Sources */,
 				46DE82E129F5AC9F00A7869A /* LookupResult.swift in Sources */,
 				465882DC29F8D4C600E2DF56 /* RootView.swift in Sources */,
