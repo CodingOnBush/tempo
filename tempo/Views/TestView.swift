@@ -50,9 +50,3 @@ struct TestView: View {
         }
     }
 }
-
-struct TestView_Previews: PreviewProvider {
-    static var previews: some View {
-        TestView(appViewModel: AppViewModel(viewContext: PersistenceController.shared.container.viewContext))
-    }
-}

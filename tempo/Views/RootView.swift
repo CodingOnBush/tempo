@@ -12,6 +12,11 @@ struct RootView: View {
     
     var body: some View {
         TabView() {
+            HomeView(appViewModel: AppViewModel(viewContext: self.viewContext))
+                .tabItem {
+                    Image(systemName: "house")
+                    Text("Home4")
+                }
             TestView(appViewModel: AppViewModel(viewContext: self.viewContext))
                 .tabItem {
                     Image(systemName: "house")
@@ -24,8 +29,11 @@ struct RootView: View {
                 }
         }
         .edgesIgnoringSafeArea(.bottom)
-//        .onAppear {
-//            print(self.appViewModel.fetchData())
-//        }
     }
 }
+
+//struct RootView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        RootView()
+//    }
+//}

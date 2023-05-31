@@ -18,4 +18,13 @@ struct AnApp: Identifiable {
         self.icon = icon
 //        self.appstoreURL = appstoreURL
     }
+    
+    static let sampleApps = [
+        AnApp(name: "Plantry: Meal Plans & Recipes ", icon: UIImage(named: "Plantry")!),
+        AnApp(name: "Plantry: Meal Plans & Recipes ", icon: UIImage(named: "Plantry")!),
+        AnApp(name: "Plantry: Meal Plans & Recipes ", icon: UIImage(named: "Plantry")!),
+        AnApp(name: "Plantry: Meal Plans & Recipes ", icon: UIImage(named: "Plantry")!),
+        AnApp(name: "Plantry: Meal Plans & Recipes ", icon: UIImage(named: "Plantry")!),
+        AnApp(name: "Plantry: Meal Plans & Recipes ", icon: UIImage(named: "Plantry")!)
+    ]
 }
