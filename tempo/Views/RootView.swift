@@ -7,36 +7,25 @@
 
 import SwiftUI
 
-enum Tab: String, CaseIterable {
-    case house
-    case library
-    case settings
-}
-
 struct RootView: View {
-    @State private var selectedTab = "Home"
+    @Environment(\.managedObjectContext) private var viewContext
     
     var body: some View {
-        TabView(selection: $selectedTab) {
+        TabView() {
+            TestView(appViewModel: AppViewModel(viewContext: self.viewContext))
+                .tabItem {
+                    Image(systemName: "house")
+                    Text("Home")
+                }
             ContentView()
-                .tag("Home")
                 .tabItem {
                     Image(systemName: "house")
                     Text("Home")
                 }
         }
-        .onAppear() {
-            print("selected tab : \(selectedTab)")
-        }
-        .onChange(of: selectedTab) { newValue in
-            print("selected tab : \(selectedTab)")
-        }
         .edgesIgnoringSafeArea(.bottom)
-    }
-}
-
-struct RootView_Previews: PreviewProvider {
-    static var previews: some View {
-        RootView()
+//        .onAppear {
+//            print(self.appViewModel.fetchData())
+//        }
     }
 }
