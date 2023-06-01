@@ -8,10 +8,10 @@
 import SwiftUI
 import CoreData
 
-struct ContentView: View {
+struct ContentView2: View {
     @Environment(\.managedObjectContext) private var viewContext
-    @State var coredataItems: [AppEntity] = []
     @Environment(\.scenePhase) var scenePhase
+    @State var coredataItems: [AppEntity] = []
     
     var body: some View {
         NavigationView {
@@ -78,6 +78,7 @@ struct ContentView: View {
         withAnimation {
             let newItem = AppEntity(context: viewContext)
             newItem.timestamp = Date()
+            newItem.icon = UIImage(named: "defaultAppIcon")?.pngData()
             
             do {
                 try viewContext.save()
@@ -115,7 +116,7 @@ private let itemFormatter: DateFormatter = {
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView()
+        ContentView2()
             .environment(\.managedObjectContext, PersistenceController.preview.container.viewContext)
     }
 }

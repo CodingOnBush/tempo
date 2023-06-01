@@ -3,6 +3,7 @@
     <entity name="AppEntity" representedClassName="AppEntity" syncable="YES" codeGenerationType="class">
         <attribute name="appName" optional="YES" attributeType="String"/>
         <attribute name="icon" optional="YES" attributeType="Binary" allowsExternalBinaryDataStorage="YES"/>
+        <attribute name="id" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
         <attribute name="timestamp" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
     </entity>
 </model>

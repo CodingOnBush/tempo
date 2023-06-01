@@ -11,6 +11,8 @@ import CoreData
 class AppViewModel: ObservableObject {
     var viewContext: NSManagedObjectContext
     @Published var apps: [AnApp] = []
+    @State var homeAppSearch: String = ""
+    var appsUpdated = false
     
     init(viewContext: NSManagedObjectContext) {
         self.viewContext = viewContext
@@ -28,12 +30,13 @@ class AppViewModel: ObservableObject {
             self.apps = []
             
             for item in coredataItems {
-                if let safeAppName = item.appName, let safeAppIcon = item.icon {
-                    let newApp = AnApp(name: safeAppName, icon: UIImage(data: safeAppIcon)!)
+                if let safeAppName = item.appName, let safeAppIcon = item.icon, let safeID = item.id {
+                    let newApp = AnApp(id: safeID, name: safeAppName, icon: UIImage(data: safeAppIcon)!)
                     self.apps.append(newApp)
                 }
             }
             
+            self.appsUpdated = false
         } catch {
             // Gérer les erreurs de récupération des données
             print("Erreur lors de la récupération des données : \(error.localizedDescription)")
@@ -41,12 +44,14 @@ class AppViewModel: ObservableObject {
     }
     
     func addApp(name: String, icon: UIImage) {
-        let newApp = AnApp(name: name, icon: icon)
+        let newApp = AnApp(id: UUID(), name: name, icon: icon)
         self.apps.append(newApp)
+        self.appsUpdated = true
         
         let entity = AppEntity(context: viewContext)
         entity.appName = name
         entity.icon = icon.pngData()
+        entity.id = newApp.id
         
         do {
             try viewContext.save()
@@ -57,12 +62,11 @@ class AppViewModel: ObservableObject {
         }
     }
     
-    func removeApp(at index: Int) {
-        let app = apps[index]
-        apps.remove(at: index)
+    func removeApp(id: UUID) {
+        apps.removeAll { $0.id == id }
         
         let fetchRequest: NSFetchRequest<AppEntity> = AppEntity.fetchRequest()
-        fetchRequest.predicate = NSPredicate(format: "appName == %@", app.name)
+        fetchRequest.predicate = NSPredicate(format: "id == %@", id.uuidString)
         
         do {
             let results = try viewContext.fetch(fetchRequest)
@@ -78,25 +82,25 @@ class AppViewModel: ObservableObject {
     }
     
     func updateApp(at index: Int, newName: String, newIcon: UIImage) {
-        var app = apps[index]
-        app.name = newName
-        app.icon = newIcon
-        
-        let fetchRequest: NSFetchRequest<AppEntity> = AppEntity.fetchRequest()
-        fetchRequest.predicate = NSPredicate(format: "appName == %@", app.name)
-        
-        do {
-            let results = try viewContext.fetch(fetchRequest)
-            if let appEntity = results.first {
-                appEntity.appName = newName
-                appEntity.icon = newIcon.pngData()
-                try viewContext.save()
-                print("App updated and data saved to CoreData!")
-            }
-        } catch {
-            // Gérer les erreurs lors de la mise à jour des données
-            print("Erreur lors de la mise à jour des données : \(error.localizedDescription)")
-        }
+//        var app = apps[index]
+//        app.name = newName
+//        app.icon = newIcon
+//
+//        let fetchRequest: NSFetchRequest<AppEntity> = AppEntity.fetchRequest()
+//        fetchRequest.predicate = NSPredicate(format: "appName == %@", app.name)
+//
+//        do {
+//            let results = try viewContext.fetch(fetchRequest)
+//            if let appEntity = results.first {
+//                appEntity.appName = newName
+//                appEntity.icon = newIcon.pngData()
+//                try viewContext.save()
+//                print("App updated and data saved to CoreData!")
+//            }
+//        } catch {
+//            // Gérer les erreurs lors de la mise à jour des données
+//            print("Erreur lors de la mise à jour des données : \(error.localizedDescription)")
+//        }
     }
     
 //    func updateLocalStorage() {

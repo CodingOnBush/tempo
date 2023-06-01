@@ -9,62 +9,132 @@ import SwiftUI
 
 struct HomeView: View {
     @Environment(\.managedObjectContext) private var viewContext
-    @ObservedObject var appViewModel: AppViewModel
+    @ObservedObject var vm: AppViewModel
     @Environment(\.scenePhase) var scenePhase
-    @State var appSearch: String = ""
-    //    Whether the user is focused on this `TextField`.
     @State private var isEditing: Bool = false
+    @Binding var tabSelection: String
     
-    init(appViewModel: AppViewModel) {
-        self.appViewModel = appViewModel
-    }
+    @FetchRequest(entity: AppEntity.entity(), sortDescriptors: []) private var appsFetched: FetchedResults<AppEntity>
     
     var body: some View {
         NavigationView {
             VStack {
-                TextField("Search an app", text: $appSearch, onEditingChanged: { isEditing = $0 })
+                TextField("Search an app", text: $vm.homeAppSearch, onEditingChanged: { isEditing = $0 })
                     .textFieldStyle(FSTextFieldStyle(isEditing: isEditing))
                     .padding(.horizontal, 16)
                     .padding(.top, 16)
-                    .submitLabel(.search)
+                
+                Button {
+                    if let safeID = vm.apps.first?.id {
+                        self.vm.removeApp(id: safeID)
+                    }
+                } label: {
+                    Label("delete", systemImage: "xmark.bin.circle")
+                }
+
                 
                 VStack(alignment: .leading) {
                     HStack(alignment: .center) {
                         Text("Recently added")
                             .font(.title2)
                         Spacer()
+//                        NavigationLink {
+//                            GridAppsView(apps: self.vm.apps)
+//                        } label: {
+//                            Text("see more")
+//                                .underline()
+//                        }
+                        
                         Button {
-                            print("btn pressed")
+                            self.tabSelection = "library"
                         } label: {
                             Text("see more")
                                 .underline()
                         }
-                        
                     }
                     
                     ScrollView(.horizontal, showsIndicators: false) {
-                        HStack(alignment: .top, spacing: 16) {
-                            ForEach(self.appViewModel.apps) { item in
+                        HStack(alignment: .center, spacing: 16) {
+                            ForEach(self.vm.apps) { item in
                                 NavigationLink{
                                     Text("new")
                                 } label: {
-                                    withAnimation {
-                                        LittleAppCell(app: item)
+                                    VStack {
+                                        ZStack {
+                                            Image(uiImage: item.icon)
+                                                .resizable()
+                                        }
+                                        .cornerRadius(16)
+                                        .frame(height: 78)
+                                        
+                                        Text(item.name)
+                                            .lineLimit(1)
+                                            .font(.caption)
+                                            .foregroundColor(.primary)
+                                    }
+                                    .frame(width: 78)
+                                    .contextMenu {
+                                        Button {
+                                            print("Btn pressed")
+                                            self.vm.removeApp(id: item.id)
+                                            self.vm.fetchData()
+                                        } label: {
+                                            Label("Remove app", systemImage: "trash.circle")
+                                        }
                                     }
                                 }
                             }
                         }
+                        .frame(height: 100)
                     }
                 }
                 .padding()
                 
                 Spacer()
+                
+                ScrollView(.vertical) {
+                    LazyHStack(spacing: 16) {
+                        ForEach(appsFetched, id: \.self) { app in
+                            VStack {
+                                if let safeIconData = app.icon {
+                                    Image(uiImage: UIImage(data: safeIconData)!)
+                                        .resizable()
+                                        .cornerRadius(16)
+                                        .frame(height: 78)
+                                } else {
+                                    Image("Plantry")
+                                        .resizable()
+                                        .cornerRadius(16)
+                                        .frame(height: 78)
+                                }
+                                
+                                Text(app.appName ?? "no appname found")
+                                    .lineLimit(1)
+                                    .font(.caption)
+                                    .foregroundColor(.primary)
+                            }
+                            .frame(width: 78)
+                            .contextMenu {
+                                Button {
+                                    print("Btn pressed")
+                                    deleteApp(app)
+                                } label: {
+                                    Label("Remove app", systemImage: "trash.circle")
+                                }
+                            }
+                            .modifier(Delete(action: {
+                                print("HEYYYYY")
+                            }))
+                        }
+                    }
+                    .padding()
+                }
             }
         }
         .onChange(of: scenePhase) { newPhase in
             if newPhase == .active {
                 print("Active")
-                self.appViewModel.fetchData()
+                self.vm.fetchData()
             } else if newPhase == .inactive {
                 print("Inactive")
             } else if newPhase == .background {
@@ -72,13 +142,23 @@ struct HomeView: View {
             }
         }
     }
-}
-
-struct HomeView_Previews: PreviewProvider {
-    static var previews: some View {
-        HomeView(appViewModel: AppViewModel(viewContext: PersistenceController.shared.container.viewContext))
+    
+    private func deleteApp(_ appEntity: AppEntity) {
+        viewContext.delete(appEntity)
+        
+        do {
+            try viewContext.save()
+        } catch {
+            print("Error deleting card: \(error.localizedDescription)")
+        }
     }
 }
+
+//struct HomeView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        HomeView(vm: AppViewModel(viewContext: PersistenceController.shared.container.viewContext), tabSelection: 0)
+//    }
+//}
 
 extension Color {
     static let lightShadow = Color(red: 255 / 255, green: 255 / 255, blue: 255 / 255)
@@ -102,6 +182,7 @@ struct FSTextFieldStyle: TextFieldStyle {
             .padding(.vertical, 6)
             .padding(.horizontal, 8)
             .background(myBorder)
+            .submitLabel(.search)
     }
     
     var myBorder: some View {

@@ -78,6 +78,7 @@ struct ShareSheetView: View {
         newItem.timestamp = Date()
         newItem.appName = self.currentApp.trackName
         newItem.icon = self.currentApp.appIconUIImage!.pngData()
+        newItem.id = UUID()
 
         do {
             try viewContext.save()

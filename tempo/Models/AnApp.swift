@@ -8,23 +8,24 @@
 import UIKit
 
 struct AnApp: Identifiable {
-    let id = UUID()
+    let id: UUID
     var name: String
     var icon: UIImage
 //    let appstoreURL: String
     
-    init(name: String, icon: UIImage) {
+    init(id: UUID, name: String, icon: UIImage) {
+        self.id = id
         self.name = name
         self.icon = icon
 //        self.appstoreURL = appstoreURL
     }
     
     static let sampleApps = [
-        AnApp(name: "Plantry: Meal Plans & Recipes ", icon: UIImage(named: "Plantry")!),
-        AnApp(name: "Plantry: Meal Plans & Recipes ", icon: UIImage(named: "Plantry")!),
-        AnApp(name: "Plantry: Meal Plans & Recipes ", icon: UIImage(named: "Plantry")!),
-        AnApp(name: "Plantry: Meal Plans & Recipes ", icon: UIImage(named: "Plantry")!),
-        AnApp(name: "Plantry: Meal Plans & Recipes ", icon: UIImage(named: "Plantry")!),
-        AnApp(name: "Plantry: Meal Plans & Recipes ", icon: UIImage(named: "Plantry")!)
+        AnApp(id: UUID(), name: "Plantry: Meal Plans & Recipes ", icon: UIImage(named: "Plantry")!),
+        AnApp(id: UUID(), name: "Plantry: Meal Plans & Recipes ", icon: UIImage(named: "Plantry")!),
+        AnApp(id: UUID(), name: "Plantry: Meal Plans & Recipes ", icon: UIImage(named: "Plantry")!),
+        AnApp(id: UUID(), name: "Plantry: Meal Plans & Recipes ", icon: UIImage(named: "Plantry")!),
+        AnApp(id: UUID(), name: "Plantry: Meal Plans & Recipes ", icon: UIImage(named: "Plantry")!),
+        AnApp(id: UUID(), name: "Plantry: Meal Plans & Recipes ", icon: UIImage(named: "Plantry")!)
     ]
 }
