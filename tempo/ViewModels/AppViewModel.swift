@@ -9,14 +9,24 @@ import SwiftUI
 import CoreData
 
 class AppViewModel: ObservableObject {
-    var viewContext: NSManagedObjectContext
+    var persistence = PersistenceController.shared
     @Published var apps: [AnApp] = []
+    @Published var coredataItems: [AppEntity] = []
     @State var homeAppSearch: String = ""
     var appsUpdated = false
+    @Published var filteredItems: [AnApp] = []
     
-    init(viewContext: NSManagedObjectContext) {
-        self.viewContext = viewContext
-        fetchData()
+    init() {
+        self.fetchData()
+    }
+    
+    func makeFilter(search: String) {
+        self.filteredItems = []
+        for app in apps {
+            if app.name.contains(search) {
+                self.filteredItems.append(app)
+            }
+        }
     }
     
     func fetchData() {
@@ -24,14 +34,14 @@ class AppViewModel: ObservableObject {
         
         do {
             // Récupérer les éléments à partir du contexte CoreData en utilisant la requête de récupération
-            let coredataItems = try viewContext.fetch(fetchRequest)
+            self.coredataItems = try persistence.container.viewContext.fetch(fetchRequest)
             print("Data found from CoreData ! \(coredataItems.count)")
             
             self.apps = []
             
             for item in coredataItems {
                 if let safeAppName = item.appName, let safeAppIcon = item.icon, let safeID = item.id {
-                    let newApp = AnApp(id: safeID, name: safeAppName, icon: UIImage(data: safeAppIcon)!)
+                    let newApp = AnApp(id: safeID, name: safeAppName, icon: UIImage(data: safeAppIcon)!, createdAt: item.timestamp ?? Date.now)
                     self.apps.append(newApp)
                 }
             }
@@ -43,18 +53,38 @@ class AppViewModel: ObservableObject {
         }
     }
     
+    func deleteItems(offsets: IndexSet) {
+        withAnimation {
+            offsets.map { coredataItems[$0] }.forEach(self.persistence.container.viewContext.delete)
+            
+            offsets.map { index in
+                if let appID = coredataItems[index].id {
+                    removeApp(id: appID)
+                }
+            }
+            
+            do {
+                try self.persistence.container.viewContext.save()
+            } catch {
+                // Replace this implementation with code to handle the error appropriately.
+                // fatalError() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
+                let nsError = error as NSError
+                fatalError("Unresolved error \(nsError), \(nsError.userInfo)")
+            }
+        }
+    }
+    
     func addApp(name: String, icon: UIImage) {
-        let newApp = AnApp(id: UUID(), name: name, icon: icon)
+        let newApp = AnApp(id: UUID(), name: name, icon: icon, createdAt: Date.now)
         self.apps.append(newApp)
-        self.appsUpdated = true
         
-        let entity = AppEntity(context: viewContext)
+        let entity = AppEntity(context: self.persistence.container.viewContext)
         entity.appName = name
         entity.icon = icon.pngData()
         entity.id = newApp.id
         
         do {
-            try viewContext.save()
+            try self.persistence.container.viewContext.save()
             print("App added and data saved to CoreData!")
         } catch {
             // Gérer les erreurs lors de la sauvegarde des données
@@ -69,10 +99,10 @@ class AppViewModel: ObservableObject {
         fetchRequest.predicate = NSPredicate(format: "id == %@", id.uuidString)
         
         do {
-            let results = try viewContext.fetch(fetchRequest)
+            let results = try self.persistence.container.viewContext.fetch(fetchRequest)
             if let appEntity = results.first {
-                viewContext.delete(appEntity)
-                try viewContext.save()
+                self.persistence.container.viewContext.delete(appEntity)
+                try self.persistence.container.viewContext.save()
                 print("App removed and data saved to CoreData!")
             }
         } catch {
@@ -124,7 +154,7 @@ class AppViewModel: ObservableObject {
         let batchDeleteRequest = NSBatchDeleteRequest(fetchRequest: fetchRequest)
         
         do {
-            try viewContext.execute(batchDeleteRequest)
+            try self.persistence.container.viewContext.execute(batchDeleteRequest)
             self.apps = [] // Réinitialiser le tableau des apps
             print("Data cleared from CoreData!")
         } catch {

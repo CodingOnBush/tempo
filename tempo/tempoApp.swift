@@ -13,8 +13,9 @@ struct tempoApp: App {
     
     var body: some Scene {
         WindowGroup {
-            RootView()
+            AppLibrary()
                 .environment(\.managedObjectContext, viewContext)
+                .environmentObject(AppViewModel())
         }
     }
 }

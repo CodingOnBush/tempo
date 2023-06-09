@@ -10,9 +10,62 @@ import SwiftUI
 struct AppLibrary: View {
     @Environment(\.managedObjectContext) private var viewContext
     @Environment(\.scenePhase) var scenePhase
+    @StateObject var viewModel = AppViewModel()
+    @State var searchText: String = ""
     
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        NavigationView {
+            if viewModel.apps.count == 0 {
+                Text("tuto add app")
+            } else {
+                List {
+                    ForEach(viewModel.apps) { item in
+                        NavigationLink {
+                            Text("new view")
+                        } label: {
+                            HStack {
+                                Image(uiImage: item.icon)
+                                    .resizable()
+                                    .scaledToFit()
+                                    .frame(width: 50, height: 50)
+                                    .cornerRadius(8)
+                                Text(item.name)
+                                    .font(.system(.title3, design: .rounded))
+                                    .bold()
+                            }
+                        }
+                        .padding(.horizontal, 0)
+                    }
+                    .onDelete(perform: viewModel.deleteItems(offsets:))
+                }
+                .toolbar {
+                    ToolbarItemGroup(placement: .navigationBarTrailing) {
+                        EditButton()
+                        Button {
+                            self.viewModel.emptyLocalStorage()
+                        } label: {
+                            Label("Clean Core Data Storage", systemImage: "trash")
+                        }
+                    }
+                }
+                .navigationTitle("Your apps")
+                .navigationBarTitleDisplayMode(.inline)
+                .searchable(text: $searchText)
+            }
+        }
+        .onAppear {
+            viewModel.fetchData()
+        }
+        .onChange(of: scenePhase) { newPhase in
+            if newPhase == .active {
+                print("Active")
+                viewModel.fetchData()
+            } else if newPhase == .inactive {
+                print("Inactive")
+            } else if newPhase == .background {
+                print("Background")
+            }
+        }
     }
 }
 

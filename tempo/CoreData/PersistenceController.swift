@@ -47,6 +47,18 @@ struct PersistenceController {
         })
         container.viewContext.automaticallyMergesChangesFromParent = true
     }
+    
+    func saveContext() {
+        let context = self.container.viewContext
+        if context.hasChanges {
+            do {
+                try context.save()
+            } catch {
+                let nsError = error as NSError
+                fatalError("Erreur lors de la sauvegarde du contexte : \(nsError), \(nsError.userInfo)")
+            }
+        }
+    }
 }
 
 public extension URL {

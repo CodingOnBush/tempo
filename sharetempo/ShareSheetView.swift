@@ -7,6 +7,13 @@
 
 import SwiftUI
 import CoreData
+import CoreHaptics
+
+enum BtnState {
+    case idle
+    case loading
+    case done
+}
 
 struct ShareSheetView: View {
     @Environment(\.managedObjectContext) private var viewContext
@@ -14,55 +21,91 @@ struct ShareSheetView: View {
     @StateObject var currentApp = AppModel()
     @State var isValidURL: Bool = false
     @State var isItemSaved = "nooo"
+    @State private var buttonState: BtnState = .idle
+    @State private var engine: CHHapticEngine?
     
     var body: some View {
         ZStack {
-            Color.gray.ignoresSafeArea()
-            VStack {
-                ZStack {
-                    Color(red: 0.89, green: 0.89, blue: 0.89)
-                        .ignoresSafeArea()
-                    VStack {
-                        Text("is item saved ? \(isItemSaved)")
-                        HStack {
-                            ZStack {
-                                Rectangle().foregroundColor(.gray)
-                                self.currentApp.appIcon?.resizable()
-                            }
-                            .frame(width: 100, height: 100)
-                            .cornerRadius(16)
-                            .shadow(radius: 5)
-
-                            VStack(alignment: .leading, spacing: 5) {
-                                Text(self.currentApp.trackName ?? "app name")
-                                    .font(.headline)
-                                Text("\(self.currentApp.trackId ?? 0)")
-                                    .font(.subheadline)
-                            }
-                            .padding(.leading, 16)
-                        }
-                        .padding(18)
-                        .background(Color.white)
-                        .cornerRadius(8)
+            Color(red: 0.1, green: 0.1, blue: 0.1)
+                .ignoresSafeArea()
+            VStack(alignment: .leading) {
+                Spacer()
+                
+                VStack {
+                    ZStack {
+                        Rectangle().foregroundColor(.gray)
+                        self.currentApp.appIcon?.resizable()
                     }
+                    .frame(width: 100, height: 100)
+                    .cornerRadius(16)
+                    .shadow(radius: 5)
+
+                    VStack(alignment: .center, spacing: 5) {
+                        Text(self.currentApp.trackName ?? "app name")
+                            .font(.headline)
+                            .foregroundColor(.white)
+                        Text("\(self.currentApp.trackId ?? 0)")
+                            .font(.subheadline)
+                            .foregroundColor(.white)
+                    }
+                    .padding(.top, 16)
                 }
+                .padding(18)
+                .frame(maxWidth: .infinity)
+                .cornerRadius(8)
                 
                 Spacer()
                 
-                Button(action: addItem) {
-                    ZStack {
-                        Color.black
-                        Label("Add Item", systemImage: "plus.square")
-                            .bold()
-                            .foregroundColor(.white)
+                Button(action: {
+                    withAnimation(.easeInOut(duration: 0.3)) {
+                        buttonState = .loading
                     }
-                    .frame(width: 130, height: 46)
+                }) {
+                    ZStack {
+                        Color.white
+                        switch buttonState {
+                        case .idle:
+                            Text("Save app")
+                                .font(.title)
+                                .foregroundColor(.black)
+                        case .loading:
+                            ProgressView()
+                                .tint(.black)
+                        case .done:
+                            Label("Saved", systemImage: "checkmark")
+                                .font(.title2)
+                                .foregroundColor(.black)
+                        }
+                    }
+                    .frame(maxWidth: .infinity)
+                    .frame(height: 56)
                     .cornerRadius(8)
+                }
+                .onChange(of: buttonState) { newValue in
+                    if newValue == .loading {
+                        // save l'app
+                        self.addItem()
+                        DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
+                            // Put your code which should be executed with a delay here
+                            self.buttonState = .done
+                        }
+                    } else if newValue == .done {
+                        // vibration
+                        // wait 1scd
+                        // fermé la popup
+                        self.simpleSuccess()
+                        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+                            // Put your code which should be executed with a delay here
+                            // fermer la popup
+                            self.context?.completeRequest(returningItems: [], completionHandler: nil)
+                        }
+                    }
                 }
             }
             .padding()
         }.onAppear {
             // onAppear triggers actions any time the view appears on screen, even if it’s not the first time.
+            self.prepareHaptics()
             self.loadMaxData()
         }.task {
             // task triggers actions that execute asynchronously before the view appears on screen.
@@ -71,6 +114,43 @@ struct ShareSheetView: View {
             // onDisappear triggers actions when a view disappears from screen.
         }
         
+    }
+    
+    func prepareHaptics() {
+        guard CHHapticEngine.capabilitiesForHardware().supportsHaptics else { return }
+
+        do {
+            engine = try CHHapticEngine()
+            try engine?.start()
+        } catch {
+            print("There was an error creating the engine: \(error.localizedDescription)")
+        }
+    }
+    
+    func simpleSuccess() {
+        let generator = UINotificationFeedbackGenerator()
+        generator.notificationOccurred(.success)
+    }
+    
+    func complexSuccess() {
+        // make sure that the device supports haptics
+        guard CHHapticEngine.capabilitiesForHardware().supportsHaptics else { return }
+        var events = [CHHapticEvent]()
+
+        // create one intense, sharp tap
+        let intensity = CHHapticEventParameter(parameterID: .hapticIntensity, value: 1)
+        let sharpness = CHHapticEventParameter(parameterID: .hapticSharpness, value: 1)
+        let event = CHHapticEvent(eventType: .hapticTransient, parameters: [intensity, sharpness], relativeTime: 0)
+        events.append(event)
+
+        // convert those events into a pattern and play it immediately
+        do {
+            let pattern = try CHHapticPattern(events: events, parameters: [])
+            let player = try engine?.makePlayer(with: pattern)
+            try player?.start(atTime: 0)
+        } catch {
+            print("Failed to play pattern: \(error.localizedDescription).")
+        }
     }
     
     private func addItem() {

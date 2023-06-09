@@ -19,6 +19,7 @@
 		46658B542A27B16E00CB9802 /* GridAppsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46658B532A27B16E00CB9802 /* GridAppsView.swift */; };
 		46658B582A287BA300CB9802 /* Delete.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46658B572A287BA300CB9802 /* Delete.swift */; };
 		46658B5B2A287D4700CB9802 /* AppLibrary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46658B5A2A287D4700CB9802 /* AppLibrary.swift */; };
+		46658B5D2A28C78200CB9802 /* ContentView3.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46658B5C2A28C78200CB9802 /* ContentView3.swift */; };
 		46AB95C829E2E5670003A3F4 /* sharetempo.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 46AB95BE29E2E5670003A3F4 /* sharetempo.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		46AF379E29FF03670076982E /* LookupResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46DE82E029F5AC9F00A7869A /* LookupResult.swift */; };
 		46AF379F29FF0EB10076982E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 46BD14E529E2767900C3BBE4 /* Assets.xcassets */; };
@@ -26,6 +27,8 @@
 		46BD14DD29E2767900C3BBE4 /* tempoApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46BD14DC29E2767900C3BBE4 /* tempoApp.swift */; };
 		46BD14E429E2767900C3BBE4 /* ContentView2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46BD14E329E2767900C3BBE4 /* ContentView2.swift */; };
 		46BD14E629E2767900C3BBE4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 46BD14E529E2767900C3BBE4 /* Assets.xcassets */; };
+		46C5A87D2A33249300A4904D /* GuideView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46C5A87C2A33249300A4904D /* GuideView.swift */; };
+		46C5A87F2A3397A200A4904D /* AppLogo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46C5A87E2A3397A200A4904D /* AppLogo.swift */; };
 		46DD0C1829E51A2F00DBC94C /* ShareNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46DD0C1729E51A2F00DBC94C /* ShareNavigationController.swift */; };
 		46DE82E129F5AC9F00A7869A /* LookupResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46DE82E029F5AC9F00A7869A /* LookupResult.swift */; };
 		46DE82EE29F5B11800A7869A /* AppStoreAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46DE82ED29F5B11800A7869A /* AppStoreAPI.swift */; };
@@ -68,6 +71,7 @@
 		46658B532A27B16E00CB9802 /* GridAppsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GridAppsView.swift; sourceTree = "<group>"; };
 		46658B572A287BA300CB9802 /* Delete.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Delete.swift; sourceTree = "<group>"; };
 		46658B5A2A287D4700CB9802 /* AppLibrary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppLibrary.swift; sourceTree = "<group>"; };
+		46658B5C2A28C78200CB9802 /* ContentView3.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView3.swift; sourceTree = "<group>"; };
 		46AB95BE29E2E5670003A3F4 /* sharetempo.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = sharetempo.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		46AB95C529E2E5670003A3F4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		46BD14D929E2767900C3BBE4 /* tempo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = tempo.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -75,6 +79,8 @@
 		46BD14E329E2767900C3BBE4 /* ContentView2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView2.swift; sourceTree = "<group>"; };
 		46BD14E529E2767900C3BBE4 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		46BD14E729E2767900C3BBE4 /* tempo.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = tempo.entitlements; sourceTree = "<group>"; };
+		46C5A87C2A33249300A4904D /* GuideView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GuideView.swift; sourceTree = "<group>"; };
+		46C5A87E2A3397A200A4904D /* AppLogo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppLogo.swift; sourceTree = "<group>"; };
 		46DD0C1729E51A2F00DBC94C /* ShareNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareNavigationController.swift; sourceTree = "<group>"; };
 		46DD0C1929E5407300DBC94C /* sharetempo.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = sharetempo.entitlements; sourceTree = "<group>"; };
 		46DE82E029F5AC9F00A7869A /* LookupResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LookupResult.swift; sourceTree = "<group>"; };
@@ -178,11 +184,14 @@
 			isa = PBXGroup;
 			children = (
 				465882DB29F8D4C600E2DF56 /* RootView.swift */,
-				46BD14E329E2767900C3BBE4 /* ContentView2.swift */,
 				46658B512A27732A00CB9802 /* HomeView.swift */,
+				46658B5A2A287D4700CB9802 /* AppLibrary.swift */,
+				46BD14E329E2767900C3BBE4 /* ContentView2.swift */,
 				46F1AEAB2A273E0600252F38 /* TestView.swift */,
 				46658B532A27B16E00CB9802 /* GridAppsView.swift */,
-				46658B5A2A287D4700CB9802 /* AppLibrary.swift */,
+				46658B5C2A28C78200CB9802 /* ContentView3.swift */,
+				46C5A87C2A33249300A4904D /* GuideView.swift */,
+				46C5A87E2A3397A200A4904D /* AppLogo.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -323,11 +332,14 @@
 				4602AC5E2A09A8E6003D2CD7 /* AppModel.swift in Sources */,
 				46658B542A27B16E00CB9802 /* GridAppsView.swift in Sources */,
 				46F1AEAE2A273E1600252F38 /* AppViewModel.swift in Sources */,
+				46658B5D2A28C78200CB9802 /* ContentView3.swift in Sources */,
 				464C15962A211CE8004DD087 /* Model.xcdatamodeld in Sources */,
+				46C5A87F2A3397A200A4904D /* AppLogo.swift in Sources */,
 				46658B582A287BA300CB9802 /* Delete.swift in Sources */,
 				46F1AEB02A2747A700252F38 /* AnApp.swift in Sources */,
 				46DE82EE29F5B11800A7869A /* AppStoreAPI.swift in Sources */,
 				46BD14E429E2767900C3BBE4 /* ContentView2.swift in Sources */,
+				46C5A87D2A33249300A4904D /* GuideView.swift in Sources */,
 				464C15992A211D1A004DD087 /* PersistenceController.swift in Sources */,
 				46F1AEAC2A273E0600252F38 /* TestView.swift in Sources */,
 				46DE82E129F5AC9F00A7869A /* LookupResult.swift in Sources */,

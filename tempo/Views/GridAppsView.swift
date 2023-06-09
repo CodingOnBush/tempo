@@ -63,6 +63,6 @@ struct GridAppsView: View {
 
 struct GridAppsView_Previews: PreviewProvider {
     static var previews: some View {
-        GridAppsView(vm: AppViewModel(viewContext: PersistenceController.shared.container.viewContext))
+        GridAppsView(vm: AppViewModel())
     }
 }

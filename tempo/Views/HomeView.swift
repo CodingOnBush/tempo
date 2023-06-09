@@ -9,7 +9,7 @@ import SwiftUI
 
 struct HomeView: View {
     @Environment(\.managedObjectContext) private var viewContext
-    @ObservedObject var vm: AppViewModel
+    @StateObject var vm = AppViewModel()
     @Environment(\.scenePhase) var scenePhase
     @State private var isEditing: Bool = false
     @Binding var tabSelection: String
@@ -19,37 +19,23 @@ struct HomeView: View {
     var body: some View {
         NavigationView {
             VStack {
-                TextField("Search an app", text: $vm.homeAppSearch, onEditingChanged: { isEditing = $0 })
-                    .textFieldStyle(FSTextFieldStyle(isEditing: isEditing))
-                    .padding(.horizontal, 16)
-                    .padding(.top, 16)
-                
-                Button {
-                    if let safeID = vm.apps.first?.id {
-                        self.vm.removeApp(id: safeID)
-                    }
-                } label: {
-                    Label("delete", systemImage: "xmark.bin.circle")
-                }
+//                TextField("Search an app", text: $vm.homeAppSearch, onEditingChanged: { isEditing = $0 })
+//                    .textFieldStyle(FSTextFieldStyle(isEditing: isEditing))
+//                    .padding(.horizontal, 16)
+//                    .padding(.top, 16)
 
-                
                 VStack(alignment: .leading) {
                     HStack(alignment: .center) {
                         Text("Recently added")
                             .font(.title2)
                         Spacer()
-//                        NavigationLink {
-//                            GridAppsView(apps: self.vm.apps)
-//                        } label: {
-//                            Text("see more")
-//                                .underline()
-//                        }
                         
                         Button {
-                            self.tabSelection = "library"
+                            self.tabSelection = "Apps"
                         } label: {
                             Text("see more")
                                 .underline()
+                                .foregroundColor(.orange)
                         }
                     }
                     
@@ -91,54 +77,19 @@ struct HomeView: View {
                 .padding()
                 
                 Spacer()
-                
-                ScrollView(.vertical) {
-                    LazyHStack(spacing: 16) {
-                        ForEach(appsFetched, id: \.self) { app in
-                            VStack {
-                                if let safeIconData = app.icon {
-                                    Image(uiImage: UIImage(data: safeIconData)!)
-                                        .resizable()
-                                        .cornerRadius(16)
-                                        .frame(height: 78)
-                                } else {
-                                    Image("Plantry")
-                                        .resizable()
-                                        .cornerRadius(16)
-                                        .frame(height: 78)
-                                }
-                                
-                                Text(app.appName ?? "no appname found")
-                                    .lineLimit(1)
-                                    .font(.caption)
-                                    .foregroundColor(.primary)
-                            }
-                            .frame(width: 78)
-                            .contextMenu {
-                                Button {
-                                    print("Btn pressed")
-                                    deleteApp(app)
-                                } label: {
-                                    Label("Remove app", systemImage: "trash.circle")
-                                }
-                            }
-                            .modifier(Delete(action: {
-                                print("HEYYYYY")
-                            }))
-                        }
-                    }
-                    .padding()
-                }
             }
+            .navigationTitle("Home")
         }
         .onChange(of: scenePhase) { newPhase in
             if newPhase == .active {
-                print("Active")
+//                print("Active")
                 self.vm.fetchData()
             } else if newPhase == .inactive {
-                print("Inactive")
+//                print("Inactive")
+                self.vm.fetchData()
             } else if newPhase == .background {
-                print("Background")
+//                print("Background")
+                self.vm.fetchData()
             }
         }
     }
@@ -154,11 +105,11 @@ struct HomeView: View {
     }
 }
 
-//struct HomeView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        HomeView(vm: AppViewModel(viewContext: PersistenceController.shared.container.viewContext), tabSelection: 0)
-//    }
-//}
+struct HomeView_Previews: PreviewProvider {
+    static var previews: some View {
+        HomeView(tabSelection: .constant("Home"))
+    }
+}
 
 extension Color {
     static let lightShadow = Color(red: 255 / 255, green: 255 / 255, blue: 255 / 255)
