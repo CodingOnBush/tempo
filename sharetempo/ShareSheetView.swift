@@ -13,6 +13,8 @@ enum BtnState {
     case idle
     case loading
     case done
+    case disable
+    case enable
 }
 
 struct ShareSheetView: View {
@@ -21,7 +23,7 @@ struct ShareSheetView: View {
     @StateObject var currentApp = AppModel()
     @State var isValidURL: Bool = false
     @State var isItemSaved = "nooo"
-    @State private var buttonState: BtnState = .idle
+    @State private var buttonState: BtnState = .disable
     @State private var engine: CHHapticEngine?
     
     var body: some View {
@@ -68,12 +70,21 @@ struct ShareSheetView: View {
                             Text("Save app")
                                 .font(.title)
                                 .foregroundColor(.black)
+                                
                         case .loading:
                             ProgressView()
                                 .tint(.black)
                         case .done:
                             Label("Saved", systemImage: "checkmark")
                                 .font(.title2)
+                                .foregroundColor(.black)
+                        case .disable:
+                            Text("Save app")
+                                .font(.title)
+                                .foregroundColor(.black)
+                        case .enable:
+                            Text("Save app")
+                                .font(.title)
                                 .foregroundColor(.black)
                         }
                     }
@@ -85,10 +96,11 @@ struct ShareSheetView: View {
                     if newValue == .loading {
                         // save l'app
                         self.addItem()
-                        DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
-                            // Put your code which should be executed with a delay here
-                            self.buttonState = .done
-                        }
+                        self.buttonState = .done
+                    } else if newValue == .enable {
+                        print("enable")
+                    } else if newValue == .disable {
+                        print("disable")
                     } else if newValue == .done {
                         // vibration
                         // wait 1scd
@@ -181,6 +193,7 @@ struct ShareSheetView: View {
                 DispatchQueue.main.async {
                     self.currentApp.appIconUIImage = UIImage(data: data)
                     self.currentApp.appIcon = Image(uiImage: UIImage(data: data)!)
+                    self.buttonState = .disable
                 }
             }.resume()
         }

@@ -41,10 +41,12 @@ struct AppLibrary: View {
                 .toolbar {
                     ToolbarItemGroup(placement: .navigationBarTrailing) {
                         EditButton()
+                            .foregroundColor(Color(hex: "36A4E2"))
                         Button {
                             self.viewModel.emptyLocalStorage()
                         } label: {
                             Label("Clean Core Data Storage", systemImage: "trash")
+                                .foregroundColor(Color(hex: "36A4E2"))
                         }
                     }
                 }
