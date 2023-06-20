@@ -13,3 +13,6 @@ https://medium.com/@damisipikuda/how-to-receive-a-shared-content-in-an-ios-appli
 swiftui views:
 https://iosapptemplates.com/blog/swiftui/login-screen-swiftui
 https://serialcoder.dev/text-tutorials/swiftui/working-with-the-tab-view-in-swiftui/
+
+Button Style Animation in SwiftUI
+https://medium.com/devtechie/button-style-animation-in-swiftui-5c1191a17a7

@@ -59,9 +59,8 @@ struct ShareSheetView: View {
                 Spacer()
                 
                 Button(action: {
-                    withAnimation(.easeInOut(duration: 0.3)) {
-                        buttonState = .loading
-                    }
+                    self.simpleSuccess()
+                    buttonState = .loading
                 }) {
                     ZStack {
                         Color.white
@@ -102,13 +101,8 @@ struct ShareSheetView: View {
                     } else if newValue == .disable {
                         print("disable")
                     } else if newValue == .done {
-                        // vibration
-                        // wait 1scd
-                        // fermé la popup
                         self.simpleSuccess()
-                        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
-                            // Put your code which should be executed with a delay here
-                            // fermer la popup
+                        DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
                             self.context?.completeRequest(returningItems: [], completionHandler: nil)
                         }
                     }

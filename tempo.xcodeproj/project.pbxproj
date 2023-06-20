@@ -33,6 +33,7 @@
 		46DD0C1829E51A2F00DBC94C /* ShareNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46DD0C1729E51A2F00DBC94C /* ShareNavigationController.swift */; };
 		46DE82E129F5AC9F00A7869A /* LookupResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46DE82E029F5AC9F00A7869A /* LookupResult.swift */; };
 		46DE82EE29F5B11800A7869A /* AppStoreAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46DE82ED29F5B11800A7869A /* AppStoreAPI.swift */; };
+		46E732262A39CF2E007DB146 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 46E732252A39CF2E007DB146 /* LaunchScreen.storyboard */; };
 		46F1AEAC2A273E0600252F38 /* TestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46F1AEAB2A273E0600252F38 /* TestView.swift */; };
 		46F1AEAE2A273E1600252F38 /* AppViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46F1AEAD2A273E1600252F38 /* AppViewModel.swift */; };
 		46F1AEB02A2747A700252F38 /* AnApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46F1AEAF2A2747A700252F38 /* AnApp.swift */; };
@@ -87,6 +88,7 @@
 		46DD0C1929E5407300DBC94C /* sharetempo.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = sharetempo.entitlements; sourceTree = "<group>"; };
 		46DE82E029F5AC9F00A7869A /* LookupResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LookupResult.swift; sourceTree = "<group>"; };
 		46DE82ED29F5B11800A7869A /* AppStoreAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppStoreAPI.swift; sourceTree = "<group>"; };
+		46E732252A39CF2E007DB146 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		46F1AEAB2A273E0600252F38 /* TestView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestView.swift; sourceTree = "<group>"; };
 		46F1AEAD2A273E1600252F38 /* AppViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AppViewModel.swift; path = tempo/ViewModels/AppViewModel.swift; sourceTree = SOURCE_ROOT; };
 		46F1AEAF2A2747A700252F38 /* AnApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnApp.swift; sourceTree = "<group>"; };
@@ -185,6 +187,7 @@
 				464C15932A211CDA004DD087 /* CoreData */,
 				46DE82EF29F5B28800A7869A /* Networking */,
 				46B4E8A32A33D6050009DB78 /* Components */,
+				46E732252A39CF2E007DB146 /* LaunchScreen.storyboard */,
 			);
 			path = tempo;
 			sourceTree = "<group>";
@@ -321,6 +324,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				46BD14E629E2767900C3BBE4 /* Assets.xcassets in Resources */,
+				46E732262A39CF2E007DB146 /* LaunchScreen.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -552,6 +556,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = NO;
 				CODE_SIGN_ENTITLEMENTS = /Users/vegapunk/Documents/dev/iOS/tempo/tempo/tempo.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
@@ -566,6 +571,7 @@
 				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphonesimulator*]" = YES;
 				"INFOPLIST_KEY_UILaunchScreen_Generation[sdk=iphoneos*]" = YES;
 				"INFOPLIST_KEY_UILaunchScreen_Generation[sdk=iphonesimulator*]" = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen.storyboard;
 				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphoneos*]" = UIStatusBarStyleDefault;
 				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphonesimulator*]" = UIStatusBarStyleDefault;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
@@ -593,6 +599,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = NO;
 				CODE_SIGN_ENTITLEMENTS = /Users/vegapunk/Documents/dev/iOS/tempo/tempo/tempo.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
@@ -607,6 +614,7 @@
 				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphonesimulator*]" = YES;
 				"INFOPLIST_KEY_UILaunchScreen_Generation[sdk=iphoneos*]" = YES;
 				"INFOPLIST_KEY_UILaunchScreen_Generation[sdk=iphonesimulator*]" = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen.storyboard;
 				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphoneos*]" = UIStatusBarStyleDefault;
 				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphonesimulator*]" = UIStatusBarStyleDefault;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
